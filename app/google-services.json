@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "865149377653",
+    "project_id": "lotteryqrscanner",
+    "storage_bucket": "lotteryqrscanner.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865149377653:android:03fd865a4f6a9366dfec3c",
+        "android_client_info": {
+          "package_name": "lk.jiat.qr_scanner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD4PWKXFcakSVtsB5yK8NM1PUc3d0Rsb8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

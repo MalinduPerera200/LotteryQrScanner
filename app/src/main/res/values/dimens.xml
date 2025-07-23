@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Spacing Values -->
+    <dimen name="spacing_xsmall">4dp</dimen>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_medium">16dp</dimen>
+    <dimen name="spacing_large">24dp</dimen>
+    <dimen name="spacing_xlarge">32dp</dimen>
+
+    <!-- Card Properties -->
+    <dimen name="card_corner_radius">16dp</dimen>
+    <dimen name="card_corner_radius_small">12dp</dimen>
+    <dimen name="card_elevation">8dp</dimen>
+    <dimen name="card_elevation_small">4dp</dimen>
+    <dimen name="card_elevation_medium">6dp</dimen>
+
+    <!-- Number Ball Properties -->
+    <dimen name="number_ball_size">60dp</dimen>
+    <dimen name="number_ball_radius">30dp</dimen>
+
+    <!-- Match Indicator Properties -->
+    <dimen name="indicator_size">20dp</dimen>
+
+    <!-- Button Properties -->
+    <dimen name="button_corner_radius">12dp</dimen>
+    <dimen name="button_elevation">4dp</dimen>
+
+    <!-- Progress Indicator -->
+    <dimen name="progress_track">4dp</dimen>
+</resources>

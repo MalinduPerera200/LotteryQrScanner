@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Lottery Results</string>
+
+    <!-- Content Descriptions -->
+    <string name="lottery_logo">Lottery Logo</string>
+    <string name="match_indicator">Match Indicator</string>
+
+    <!-- Section Titles -->
+    <string name="winning_numbers">Winning Numbers</string>
+    <string name="your_numbers">Your Numbers</string>
+
+    <!-- Button Text -->
+    <string name="view_result">View Result</string>
+
+    <!-- Activity Title -->
+    <string name="results_activity_title">Lottery Results</string>
+
+    <!-- Additional Strings for Lottery App -->
+    <string name="draw_number_prefix">Draw #</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="better_luck_next_time">Better luck next time!</string>
+    <string name="matches_found">%1$d matches found</string>
+    <string name="no_matches">No matches found</string>
+
+    <!-- Prize Categories -->
+    <string name="jackpot_winner">Jackpot Winner!</string>
+    <string name="second_prize">Second Prize</string>
+    <string name="third_prize">Third Prize</string>
+    <string name="consolation_prize">Consolation Prize</string>
+
+    <!-- Actions -->
+    <string name="play_again">Play Again</string>
+    <string name="check_results">Check Results</string>
+    <string name="share_results">Share Results</string>
+    <string name="back_to_home">Back to Home</string>
+
+    <!-- Loading States -->
+    <string name="loading_results">Loading results...</string>
+    <string name="checking_numbers">Checking your numbers...</string>
+
+    <!-- Error Messages -->
+    <string name="error_loading_results">Error loading results. Please try again.</string>
+    <string name="network_error">Network error. Please check your connection.</string>
+
+    <!-- Number Types -->
+    <string name="english_letter">English Letter</string>
+    <string name="bonus_number">Bonus Number</string>
+    <string name="regular_number">Regular Number</string>
+
+    <!-- Date Formats -->
+    <string name="date_format">MMM dd, yyyy</string>
+
+    <!-- Accessibility -->
+    <string name="winning_number_description">Winning number %1$s</string>
+    <string name="your_number_description">Your number %1$s</string>
+    <string name="matched_number">Matched number</string>
+    <string name="unmatched_number">Unmatched number</string>
+</resources>

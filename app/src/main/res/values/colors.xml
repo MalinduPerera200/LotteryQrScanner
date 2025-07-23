@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="nlb_blue">#0BA7EC</color>
+    <color name="dlb_red">#C02024</color>
+    <color name="nlb_light_blue">#1CD3D9</color>
+    <color name="nlb_yellow">#FEBA27</color>
+    <color name="nlb_orange">#D66324</color>
+    <color name="nlb_pink">#E026A3</color>
+    <color name="nlb_purple">#6A3B98</color> <color name="dlb_green">#BEC445</color>
+
+    <color name="text_primary">#212121</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="red">#ff0000</color>
+    <color name="light_gray_background">#F8F9FA</color>
+    <color name="gradient_start">#7B2869</color>
+    <color name="gradient_center">#C74B50</color>
+    <color name="gradient_end">#ffb600</color>
+        <color name="colorPrimary">#2196F3</color>
+        <color name="colorPrimaryDark">#1976D2</color>
+        <color name="colorAccent">#FF4081</color>
+
+        <color name="transparent">#00000000</color>
+
+        <!-- Lottery Number Ball Colors -->
+        <color name="english_letter_background">#E91E63</color>
+        <color name="bonus_number_background">#FF9800</color>
+        <color name="regular_number_background">#2196F3</color>
+
+        <!-- Card Background Colors -->
+        <color name="card_background_primary">#3F51B5</color>
+        <color name="card_background_secondary">#9C27B0</color>
+
+        <!-- Button Colors -->
+        <color name="button_background">#4CAF50</color>
+        <color name="button_ripple">#66FFFFFF</color>
+
+        <!-- Match Indicator Colors -->
+        <color name="match_indicator_background">#4CAF50</color>
+        <color name="no_match_indicator_background">#F44336</color>
+
+        <!-- Progress Indicator -->
+        <color name="progress_track">#33FFFFFF</color>
+
+        <color name="text_secondary">#757575</color>
+
+</resources>

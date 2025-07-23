@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray_background"
+    tools:context=".ResultsActivity">
+
+    <!-- Main Content Container -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/content_scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/spacing_large">
+
+            <!-- Header Section -->
+
+            <TextView
+                android:id="@+id/your_numbers_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/your_numbers"
+                android:textColor="@color/text_primary"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/winning_numbers_container" />
+
+            <TextView
+                android:id="@+id/lottery_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_xlarge"
+                android:layout_marginEnd="@dimen/spacing_large"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:text="Dhana Nidhanaya"
+                android:textColor="@color/text_primary"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Logo Section -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/logo_card"
+                android:layout_width="0dp"
+                android:layout_height="280dp"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:layout_marginEnd="@dimen/spacing_large"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lottery_name">
+
+                <ImageView
+                    android:id="@+id/logo_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/white"
+                    android:contentDescription="@string/lottery_logo"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/dana_nidanaya"
+                    tools:src="@drawable/dana_nidanaya" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Date and Draw Number Section -->
+            <LinearLayout
+                android:id="@+id/info_section"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_medium"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="@dimen/spacing_medium"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo_card">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/card_background_primary"
+                    app:cardCornerRadius="@dimen/card_corner_radius_small"
+                    app:cardElevation="@dimen/card_elevation_small">
+
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:gravity="center"
+                        android:padding="@dimen/spacing_medium"
+                        android:text="Jan 22, 2025"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/card_background_secondary"
+                    app:cardCornerRadius="@dimen/card_corner_radius_small"
+                    app:cardElevation="@dimen/card_elevation_small">
+
+                    <TextView
+                        android:id="@+id/draw_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:gravity="center"
+                        android:padding="@dimen/spacing_medium"
+                        android:text="Draw #1234"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <!-- Winning Numbers Section -->
+            <TextView
+                android:id="@+id/winning_numbers_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="@dimen/spacing_large"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/winning_numbers"
+                android:textColor="@color/text_primary"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/info_section" />
+
+            <!-- Winning Numbers Row -->
+            <LinearLayout
+                android:id="@+id/winning_numbers_container"
+                android:layout_width="500dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/winning_numbers_title">
+
+                <!-- English Letter -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/number_ball_size"
+                    android:layout_height="@dimen/number_ball_size"
+                    android:layout_margin="@dimen/spacing_xsmall"
+                    app:cardBackgroundColor="@color/colorPrimaryDark"
+                    app:cardCornerRadius="@dimen/number_ball_radius">
+
+                    <TextView
+                        android:id="@+id/english_letter"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat_black"
+                        android:gravity="center"
+                        android:text="A"
+                        android:textColor="@color/white"
+                        android:textSize="24sp" />
+
+                    <ImageView
+                        android:id="@+id/english_letter_indicator2"
+                        android:layout_width="@dimen/indicator_size"
+                        android:layout_height="@dimen/indicator_size"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:background="@drawable/done"
+                        android:contentDescription="@string/match_indicator"
+                        android:src="@drawable/close"
+                        android:visibility="visible" />
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Bonus Number -->
+
+                <!-- Regular Numbers -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/number_ball_size"
+                    android:layout_height="@dimen/number_ball_size"
+                    android:layout_margin="@dimen/spacing_xsmall"
+                    app:cardBackgroundColor="@color/gradient_end"
+                    app:cardCornerRadius="@dimen/number_ball_radius">
+
+                    <TextView
+                        android:id="@+id/num_01"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat_black"
+                        android:gravity="center"
+                        android:text="01"
+                        android:textColor="@color/text_primary"
+                        android:textSize="24sp" />
+
+                    <ImageView
+                        android:id="@+id/english_letter_indicator4"
+                        android:layout_width="@dimen/indicator_size"
+                        android:layout_height="@dimen/indicator_size"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:background="@drawable/done"
+                        android:contentDescription="@string/match_indicator"
+                        android:src="@drawable/close"
+                        android:visibility="visible" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/number_ball_size"
+                    android:layout_height="@dimen/number_ball_size"
+                    android:layout_margin="@dimen/spacing_xsmall"
+                    app:cardBackgroundColor="@color/gradient_end"
+                    app:cardCornerRadius="@dimen/number_ball_radius">
+
+                    <TextView
+                        android:id="@+id/num_02"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat_black"
+                        android:gravity="center"
+                        android:text="15"
+                        android:textColor="@color/text_primary"
+                        android:textSize="24sp" />
+
+                    <ImageView
+                        android:id="@+id/english_letter_indicator5"
+                        android:layout_width="@dimen/indicator_size"
+                        android:layout_height="@dimen/indicator_size"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:background="@drawable/done"
+                        android:contentDescription="@string/match_indicator"
+                        android:src="@drawable/close"
+                        android:visibility="visible" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/number_ball_size"
+                    android:layout_height="@dimen/number_ball_size"
+                    android:layout_margin="@dimen/spacing_xsmall"
+                    app:cardBackgroundColor="@color/gradient_end"
+                    app:cardCornerRadius="@dimen/number_ball_radius">
+
+                    <TextView
+                        android:id="@+id/num_03"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat_black"
+                        android:gravity="center"
+                        android:text="27"
+                        android:textColor="@color/text_primary"
+                        android:textSize="24sp" />
+
+                    <ImageView
+                        android:id="@+id/english_letter_indicator6"
+                        android:layout_width="@dimen/indicator_size"
+                        android:layout_height="@dimen/indicator_size"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:background="@drawable/done"
+                        android:contentDescription="@string/match_indicator"
+                        android:src="@drawable/close"
+                        android:visibility="visible" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/number_ball_size"
+                    android:layout_height="@dimen/number_ball_size"
+                    android:layout_margin="@dimen/spacing_xsmall"
+                    app:cardBackgroundColor="@color/gradient_end"
+                    app:cardCornerRadius="@dimen/number_ball_radius">
+
+                    <TextView
+                        android:id="@+id/num_04"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat_black"
+                        android:gravity="center"
+                        android:text="58"
+                        android:textColor="@color/text_primary"
+                        android:textSize="24sp" />
+
+                    <ImageView
+                        android:id="@+id/english_letter_indicator7"
+                        android:layout_width="@dimen/indicator_size"
+                        android:layout_height="@dimen/indicator_size"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:background="@drawable/done"
+                        android:contentDescription="@string/match_indicator"
+                        android:src="@drawable/close"
+                        android:visibility="visible" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <!-- Your Numbers Section -->
+
+            <!-- Your Numbers Row -->
+
+            <!-- Action Button -->
+            <LinearLayout
+                android:id="@+id/your_numbers_container"
+                android:layout_width="500dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/your_numbers_title">
+
+                <!-- English Letter with Match Indicator -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/number_ball_size"
+                    android:layout_height="@dimen/number_ball_size"
+                    android:layout_margin="@dimen/spacing_xsmall"
+                    app:cardBackgroundColor="@color/colorPrimaryDark"
+                    app:cardCornerRadius="@dimen/number_ball_radius">
+
+                    <ImageView
+                        android:id="@+id/english_letter_indicator"
+                        android:layout_width="@dimen/indicator_size"
+                        android:layout_height="@dimen/indicator_size"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:background="@drawable/done"
+                        android:contentDescription="@string/match_indicator"
+                        android:src="@drawable/close"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/english_letter_user"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat_black"
+                        android:gravity="center"
+                        android:text="A"
+                        android:textColor="@color/white"
+                        android:textSize="24sp" />
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/number_ball_size"
+                    android:layout_height="@dimen/number_ball_size"
+                    android:layout_margin="@dimen/spacing_xsmall"
+                    app:cardBackgroundColor="@color/gradient_end"
+                    app:cardCornerRadius="@dimen/number_ball_radius">
+
+                    <ImageView
+                        android:id="@+id/num_05_indicator"
+                        android:layout_width="@dimen/indicator_size"
+                        android:layout_height="@dimen/indicator_size"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:background="@drawable/done"
+                        android:contentDescription="@string/match_indicator"
+                        android:src="@drawable/close"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/num_05"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat_black"
+                        android:gravity="center"
+                        android:text="01"
+                        android:textColor="@color/text_primary"
+                        android:textSize="24sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/number_ball_size"
+                    android:layout_height="@dimen/number_ball_size"
+                    android:layout_margin="@dimen/spacing_xsmall"
+                    app:cardBackgroundColor="@color/gradient_end"
+                    app:cardCornerRadius="@dimen/number_ball_radius">
+
+                    <ImageView
+                        android:id="@+id/num_06_indicator"
+                        android:layout_width="@dimen/indicator_size"
+                        android:layout_height="@dimen/indicator_size"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:background="@drawable/done"
+                        android:contentDescription="@string/match_indicator"
+                        android:src="@drawable/close"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/num_06"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat_black"
+                        android:gravity="center"
+                        android:text="15"
+                        android:textColor="@color/text_primary"
+                        android:textSize="24sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/number_ball_size"
+                    android:layout_height="@dimen/number_ball_size"
+                    android:layout_margin="@dimen/spacing_xsmall"
+                    app:cardBackgroundColor="@color/gradient_end"
+                    app:cardCornerRadius="@dimen/number_ball_radius">
+
+                    <ImageView
+                        android:id="@+id/num_07_indicator"
+                        android:layout_width="@dimen/indicator_size"
+                        android:layout_height="@dimen/indicator_size"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:background="@drawable/done"
+                        android:contentDescription="@string/match_indicator"
+                        android:src="@drawable/close"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/num_07"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat_black"
+                        android:gravity="center"
+                        android:text="27"
+                        android:textColor="@color/text_primary"
+                        android:textSize="24sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/number_ball_size"
+                    android:layout_height="@dimen/number_ball_size"
+                    android:layout_margin="@dimen/spacing_xsmall"
+                    app:cardBackgroundColor="@color/gradient_end"
+                    app:cardCornerRadius="@dimen/number_ball_radius">
+
+                    <ImageView
+                        android:id="@+id/num_08_indicator"
+                        android:layout_width="@dimen/indicator_size"
+                        android:layout_height="@dimen/indicator_size"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:background="@drawable/done"
+                        android:contentDescription="@string/match_indicator"
+                        android:src="@drawable/close"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/num_08"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat_black"
+                        android:gravity="center"
+                        android:text="58"
+                        android:textColor="@color/text_primary"
+                        android:textSize="24sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/number_ball_size"
+                    android:layout_height="@dimen/number_ball_size"
+                    android:layout_margin="@dimen/spacing_xsmall"
+                    app:cardBackgroundColor="@color/colorPrimaryDark"
+                    app:cardCornerRadius="@dimen/number_ball_radius">
+
+                    <ImageView
+                        android:id="@+id/second_english_letter_indicator"
+                        android:layout_width="@dimen/indicator_size"
+                        android:layout_height="@dimen/indicator_size"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:background="@drawable/done"
+                        android:contentDescription="@string/match_indicator"
+                        android:src="@drawable/close"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/second_english_letter_user"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat_black"
+                        android:gravity="center"
+                        android:text="A"
+                        android:textColor="@color/white"
+                        android:textSize="24sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- User Bonus Number with Match Indicator -->
+
+                <!-- User Regular Numbers with Match Indicators -->
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/view_result_button"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginEnd="@dimen/spacing_large"
+                android:layout_marginBottom="@dimen/spacing_large"
+                android:backgroundTint="@color/button_background"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/view_result"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:cornerRadius="@dimen/button_corner_radius"
+                app:elevation="@dimen/button_elevation"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:rippleColor="@color/button_ripple" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/loading_animation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="64dp"
+                android:layout_marginEnd="64dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="false"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/loading_animation" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Loading Progress Bar -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

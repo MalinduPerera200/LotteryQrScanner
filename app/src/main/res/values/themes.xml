@@ -1,0 +1,28 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.LotteryQrScanner" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <item name="colorPrimary">@color/nlb_blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/nlb_light_blue</item>
+        <item name="colorOnPrimaryContainer">@color/black</item>
+
+        <item name="colorSecondary">@color/dlb_red</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">#F9DEDC</item> <item name="colorOnSecondaryContainer">@color/black</item>
+
+        <item name="colorTertiary">@color/nlb_yellow</item>
+        <item name="colorOnTertiary">@color/black</item>
+        <item name="colorTertiaryContainer">#FFDDB3</item> <item name="colorOnTertiaryContainer">@color/black</item>
+
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+
+        <item name="android:colorBackground">@color/white</item>
+        <item name="colorOnBackground">@color/text_primary</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+
+        <item name="colorError">@color/dlb_red</item>
+        <item name="colorOnError">@color/white</item>
+
+    </style>
+</resources>
