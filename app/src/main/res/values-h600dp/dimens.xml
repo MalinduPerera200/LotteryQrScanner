@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Content Margins & Spacing -->
+    <dimen name="content_vertical_margin">32dp</dimen>
+    <dimen name="section_spacing_large">40dp</dimen>
+
+    <!-- Card Dimensions -->
+    <dimen name="logo_card_height">220dp</dimen>
+
+    <!-- Button -->
+    <dimen name="logo_padding">28dp</dimen>
+</resources>

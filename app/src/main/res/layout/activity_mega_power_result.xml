@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_gray_background"
+    android:background="@color/background"
     tools:context=".ResultsActivity">
 
     <!-- Main Content Container -->
@@ -24,39 +24,21 @@
             android:id="@+id/content_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/spacing_large">
+            android:paddingBottom="32dp">
 
-            <!-- Header Section -->
-
+            <!-- Lottery Name Header -->
             <TextView
-                android:id="@+id/your_numbers_title"
+                android:id="@+id/lottery_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="24dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="@string/your_numbers"
-                android:textColor="@color/text_primary"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/winning_numbers_container" />
-
-            <TextView
-                android:id="@+id/lottery_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_large"
-                android:layout_marginTop="@dimen/spacing_xlarge"
-                android:layout_marginEnd="@dimen/spacing_large"
-                android:fontFamily="@font/montserrat_bold"
+                android:fontFamily="@font/inter_bold"
                 android:gravity="center"
                 android:text="Mega Power"
                 android:textColor="@color/text_primary"
-                android:textSize="36sp"
+                android:textSize="32sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,12 +48,13 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/logo_card"
                 android:layout_width="0dp"
-                android:layout_height="300dp"
-                android:layout_marginStart="@dimen/spacing_large"
-                android:layout_marginTop="@dimen/spacing_medium"
-                android:layout_marginEnd="@dimen/spacing_large"
-                app:cardCornerRadius="@dimen/card_corner_radius"
-                app:cardElevation="@dimen/card_elevation"
+                android:layout_height="200dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lottery_name">
@@ -80,11 +63,9 @@
                     android:id="@+id/logo_image_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/white"
-                    android:backgroundTint="@color/white"
+                    android:background="@color/surface"
                     android:contentDescription="@string/lottery_logo"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="20dp"
+                    android:padding="24dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/mega_logo"
                     tools:src="@drawable/mega_logo" />
@@ -96,9 +77,9 @@
                 android:id="@+id/info_section"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_medium"
-                android:layout_marginTop="@dimen/spacing_large"
-                android:layout_marginEnd="@dimen/spacing_medium"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
                 android:orientation="horizontal"
                 android:weightSum="2"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -107,47 +88,43 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/card_background_primary"
-                    app:cardCornerRadius="@dimen/card_corner_radius_small"
-                    app:cardElevation="@dimen/card_elevation_small">
+                    app:cardBackgroundColor="@color/primary"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp">
 
                     <TextView
                         android:id="@+id/date"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_medium"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/inter_semibold"
                         android:gravity="center"
-                        android:padding="@dimen/spacing_medium"
                         android:text="Jan 22, 2025"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textSize="18sp" />
 
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/card_background_secondary"
-                    app:cardCornerRadius="@dimen/card_corner_radius_small"
-                    app:cardElevation="@dimen/card_elevation_small">
+                    app:cardBackgroundColor="@color/primary_variant"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp">
 
                     <TextView
                         android:id="@+id/draw_no"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_medium"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/inter_semibold"
                         android:gravity="center"
-                        android:padding="@dimen/spacing_medium"
                         android:text="Draw #1234"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textSize="18sp" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -158,436 +135,481 @@
                 android:id="@+id/winning_numbers_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_large"
-                android:layout_marginTop="@dimen/spacing_xlarge"
-                android:layout_marginEnd="@dimen/spacing_large"
-                android:fontFamily="@font/montserrat_bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/inter_semibold"
                 android:text="@string/winning_numbers"
                 android:textColor="@color/text_primary"
                 android:textSize="24sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/info_section" />
 
-            <!-- Winning Numbers Row -->
-            <LinearLayout
-                android:id="@+id/winning_numbers_container"
-                android:layout_width="500dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="@dimen/spacing_small"
-                android:layout_marginTop="@dimen/spacing_medium"
-                android:layout_marginEnd="@dimen/spacing_small"
-                android:gravity="center"
-                android:orientation="horizontal"
+            <!-- Winning Numbers Container -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/winning_numbers_title">
 
-                <!-- English Letter -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="@dimen/number_ball_size"
-                    android:layout_height="@dimen/number_ball_size"
-                    android:layout_margin="@dimen/spacing_xsmall"
-                    app:cardBackgroundColor="@color/colorPrimaryDark"
-                    app:cardCornerRadius="@dimen/number_ball_radius">
+                <LinearLayout
+                    android:id="@+id/winning_numbers_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
 
-                    <TextView
-                        android:id="@+id/english_letter"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/montserrat_black"
-                        android:gravity="center"
-                        android:text="A"
-                        android:textColor="@color/white"
-                        android:textSize="24sp" />
+                    <!-- English Letter -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_margin="6dp"
+                        app:cardBackgroundColor="@color/primary"
+                        app:cardCornerRadius="32dp"
+                        app:cardElevation="6dp">
 
-                    <ImageView
-                        android:id="@+id/english_letter_indicator2"
-                        android:layout_width="@dimen/indicator_size"
-                        android:layout_height="@dimen/indicator_size"
-                        android:layout_gravity="bottom|center_horizontal"
-                        android:background="@drawable/done"
-                        android:contentDescription="@string/match_indicator"
-                        android:src="@drawable/close"
-                        android:visibility="visible" />
+                        <TextView
+                            android:id="@+id/english_letter"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/inter_bold"
+                            android:gravity="center"
+                            android:text="A"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
 
-                </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/english_letter_indicator2"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/done"
+                            android:contentDescription="@string/match_indicator"
+                            android:visibility="visible" />
 
-                <!-- Bonus Number -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/bonusNumberCard"
-                    android:layout_width="@dimen/number_ball_size"
-                    android:layout_height="@dimen/number_ball_size"
-                    android:layout_margin="@dimen/spacing_xsmall"
-                    app:cardBackgroundColor="@color/red"
-                    app:cardCornerRadius="@dimen/number_ball_radius">
+                    </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:id="@+id/bonusNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/montserrat_black"
-                        android:gravity="center"
-                        android:text="21"
-                        android:textColor="@color/white"
-                        android:textSize="24sp" />
+                    <!-- Bonus Number -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/bonusNumberCard"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_margin="6dp"
+                        app:cardBackgroundColor="@color/bonus_ball_color"
+                        app:cardCornerRadius="32dp"
+                        app:cardElevation="6dp">
 
-                    <ImageView
-                        android:id="@+id/english_letter_indicator3"
-                        android:layout_width="@dimen/indicator_size"
-                        android:layout_height="@dimen/indicator_size"
-                        android:layout_gravity="bottom|center_horizontal"
-                        android:background="@drawable/done"
-                        android:contentDescription="@string/match_indicator"
-                        android:src="@drawable/close"
-                        android:visibility="visible" />
+                        <TextView
+                            android:id="@+id/bonusNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/inter_bold"
+                            android:gravity="center"
+                            android:text="21"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
 
-                </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/english_letter_indicator3"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/close"
+                            android:contentDescription="@string/match_indicator"
+                            android:visibility="visible" />
 
-                <!-- Regular Numbers -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="@dimen/number_ball_size"
-                    android:layout_height="@dimen/number_ball_size"
-                    android:layout_margin="@dimen/spacing_xsmall"
-                    app:cardBackgroundColor="@color/gradient_end"
-                    app:cardCornerRadius="@dimen/number_ball_radius">
+                    </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:id="@+id/num_01"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/montserrat_black"
-                        android:gravity="center"
-                        android:text="01"
-                        android:textColor="@color/text_primary"
-                        android:textSize="24sp" />
+                    <!-- Regular Numbers -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_margin="6dp"
+                        app:cardBackgroundColor="@color/number_ball_matched"
+                        app:cardCornerRadius="32dp"
+                        app:cardElevation="6dp">
 
-                    <ImageView
-                        android:id="@+id/english_letter_indicator4"
-                        android:layout_width="@dimen/indicator_size"
-                        android:layout_height="@dimen/indicator_size"
-                        android:layout_gravity="bottom|center_horizontal"
-                        android:background="@drawable/done"
-                        android:contentDescription="@string/match_indicator"
-                        android:src="@drawable/close"
-                        android:visibility="visible" />
+                        <TextView
+                            android:id="@+id/num_01"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/inter_bold"
+                            android:gravity="center"
+                            android:text="01"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
 
-                </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/english_letter_indicator4"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/done"
+                            android:contentDescription="@string/match_indicator"
+                            android:visibility="visible" />
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="@dimen/number_ball_size"
-                    android:layout_height="@dimen/number_ball_size"
-                    android:layout_margin="@dimen/spacing_xsmall"
-                    app:cardBackgroundColor="@color/gradient_end"
-                    app:cardCornerRadius="@dimen/number_ball_radius">
+                    </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:id="@+id/num_02"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/montserrat_black"
-                        android:gravity="center"
-                        android:text="15"
-                        android:textColor="@color/text_primary"
-                        android:textSize="24sp" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_margin="6dp"
+                        app:cardBackgroundColor="@color/number_ball_matched"
+                        app:cardCornerRadius="32dp"
+                        app:cardElevation="6dp">
 
-                    <ImageView
-                        android:id="@+id/english_letter_indicator5"
-                        android:layout_width="@dimen/indicator_size"
-                        android:layout_height="@dimen/indicator_size"
-                        android:layout_gravity="bottom|center_horizontal"
-                        android:background="@drawable/done"
-                        android:contentDescription="@string/match_indicator"
-                        android:src="@drawable/close"
-                        android:visibility="visible" />
+                        <TextView
+                            android:id="@+id/num_02"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/inter_bold"
+                            android:gravity="center"
+                            android:text="15"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
 
-                </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/english_letter_indicator5"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/close"
+                            android:contentDescription="@string/match_indicator"
+                            android:visibility="visible" />
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="@dimen/number_ball_size"
-                    android:layout_height="@dimen/number_ball_size"
-                    android:layout_margin="@dimen/spacing_xsmall"
-                    app:cardBackgroundColor="@color/gradient_end"
-                    app:cardCornerRadius="@dimen/number_ball_radius">
+                    </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:id="@+id/num_03"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/montserrat_black"
-                        android:gravity="center"
-                        android:text="27"
-                        android:textColor="@color/text_primary"
-                        android:textSize="24sp" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_margin="6dp"
+                        app:cardBackgroundColor="@color/number_ball_unmatched"
+                        app:cardCornerRadius="32dp"
+                        app:cardElevation="6dp">
 
-                    <ImageView
-                        android:id="@+id/english_letter_indicator6"
-                        android:layout_width="@dimen/indicator_size"
-                        android:layout_height="@dimen/indicator_size"
-                        android:layout_gravity="bottom|center_horizontal"
-                        android:background="@drawable/done"
-                        android:contentDescription="@string/match_indicator"
-                        android:src="@drawable/close"
-                        android:visibility="visible" />
+                        <TextView
+                            android:id="@+id/num_03"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/inter_bold"
+                            android:gravity="center"
+                            android:text="27"
+                            android:textColor="@color/text_primary"
+                            android:textSize="24sp" />
 
-                </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/english_letter_indicator6"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/close"
+                            android:contentDescription="@string/match_indicator"
+                            android:visibility="visible" />
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="@dimen/number_ball_size"
-                    android:layout_height="@dimen/number_ball_size"
-                    android:layout_margin="@dimen/spacing_xsmall"
-                    app:cardBackgroundColor="@color/gradient_end"
-                    app:cardCornerRadius="@dimen/number_ball_radius">
+                    </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:id="@+id/num_04"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/montserrat_black"
-                        android:gravity="center"
-                        android:text="58"
-                        android:textColor="@color/text_primary"
-                        android:textSize="24sp" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_margin="6dp"
+                        app:cardBackgroundColor="@color/number_ball_unmatched"
+                        app:cardCornerRadius="32dp"
+                        app:cardElevation="6dp">
 
-                    <ImageView
-                        android:id="@+id/english_letter_indicator7"
-                        android:layout_width="@dimen/indicator_size"
-                        android:layout_height="@dimen/indicator_size"
-                        android:layout_gravity="bottom|center_horizontal"
-                        android:background="@drawable/done"
-                        android:contentDescription="@string/match_indicator"
-                        android:src="@drawable/close"
-                        android:visibility="visible" />
+                        <TextView
+                            android:id="@+id/num_04"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/inter_bold"
+                            android:gravity="center"
+                            android:text="58"
+                            android:textColor="@color/text_primary"
+                            android:textSize="24sp" />
 
-                </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/english_letter_indicator7"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/close"
+                            android:contentDescription="@string/match_indicator"
+                            android:visibility="visible" />
 
-            </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
             <!-- Your Numbers Section -->
+            <TextView
+                android:id="@+id/your_numbers_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/inter_semibold"
+                android:text="@string/your_numbers"
+                android:textColor="@color/text_primary"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
-            <!-- Your Numbers Row -->
-
-            <!-- Action Button -->
-            <LinearLayout
-                android:id="@+id/your_numbers_container"
-                android:layout_width="500dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="@dimen/spacing_small"
+            <!-- Your Numbers Container -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="@dimen/spacing_small"
-                android:gravity="center"
-                android:orientation="horizontal"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/your_numbers_title">
 
-                <!-- English Letter with Match Indicator -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="@dimen/number_ball_size"
-                    android:layout_height="@dimen/number_ball_size"
-                    android:layout_margin="@dimen/spacing_xsmall"
-                    app:cardBackgroundColor="@color/colorPrimaryDark"
-                    app:cardCornerRadius="@dimen/number_ball_radius">
+                <LinearLayout
+                    android:id="@+id/your_numbers_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
 
-                    <ImageView
-                        android:id="@+id/english_letter_indicator"
-                        android:layout_width="@dimen/indicator_size"
-                        android:layout_height="@dimen/indicator_size"
-                        android:layout_gravity="bottom|center_horizontal"
-                        android:background="@drawable/done"
-                        android:contentDescription="@string/match_indicator"
-                        android:src="@drawable/close"
-                        android:visibility="visible" />
+                    <!-- Your English Letter -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_margin="6dp"
+                        app:cardBackgroundColor="@color/primary"
+                        app:cardCornerRadius="32dp"
+                        app:cardElevation="6dp">
 
-                    <TextView
-                        android:id="@+id/english_letter_user"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/montserrat_black"
-                        android:gravity="center"
-                        android:text="A"
-                        android:textColor="@color/white"
-                        android:textSize="24sp" />
+                        <TextView
+                            android:id="@+id/english_letter_user"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/inter_bold"
+                            android:gravity="center"
+                            android:text="A"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
 
-                </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/english_letter_indicator"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/close"
+                            android:contentDescription="@string/match_indicator"
+                            android:visibility="visible" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/bonusNumberCard1"
-                    android:layout_width="@dimen/number_ball_size"
-                    android:layout_height="@dimen/number_ball_size"
-                    android:layout_margin="@dimen/spacing_xsmall"
-                    app:cardBackgroundColor="@color/red"
-                    app:cardCornerRadius="@dimen/number_ball_radius">
+                    </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:id="@+id/bonus_num_indicator"
-                        android:layout_width="@dimen/indicator_size"
-                        android:layout_height="@dimen/indicator_size"
-                        android:layout_gravity="bottom|center_horizontal"
-                        android:background="@drawable/done"
-                        android:contentDescription="@string/match_indicator"
-                        android:src="@drawable/close"
-                        android:visibility="visible" />
+                    <!-- Your Bonus Number -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/bonusNumberCard1"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_margin="6dp"
+                        app:cardBackgroundColor="@color/bonus_ball_color"
+                        app:cardCornerRadius="32dp"
+                        app:cardElevation="6dp">
 
-                    <TextView
-                        android:id="@+id/bonus_num_user"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/montserrat_black"
-                        android:gravity="center"
-                        android:text="21"
-                        android:textColor="@color/white"
-                        android:textSize="24sp" />
+                        <TextView
+                            android:id="@+id/bonus_num_user"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/inter_bold"
+                            android:gravity="center"
+                            android:text="21"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
 
-                </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/bonus_num_indicator"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/done"
+                            android:contentDescription="@string/match_indicator"
+                            android:visibility="visible" />
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="@dimen/number_ball_size"
-                    android:layout_height="@dimen/number_ball_size"
-                    android:layout_margin="@dimen/spacing_xsmall"
-                    app:cardBackgroundColor="@color/gradient_end"
-                    app:cardCornerRadius="@dimen/number_ball_radius">
+                    </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:id="@+id/num_05_indicator"
-                        android:layout_width="@dimen/indicator_size"
-                        android:layout_height="@dimen/indicator_size"
-                        android:layout_gravity="bottom|center_horizontal"
-                        android:background="@drawable/done"
-                        android:contentDescription="@string/match_indicator"
-                        android:src="@drawable/close"
-                        android:visibility="visible" />
+                    <!-- Your Regular Numbers -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_margin="6dp"
+                        app:cardBackgroundColor="@color/number_ball_matched"
+                        app:cardCornerRadius="32dp"
+                        app:cardElevation="6dp">
 
-                    <TextView
-                        android:id="@+id/num_05"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/montserrat_black"
-                        android:gravity="center"
-                        android:text="01"
-                        android:textColor="@color/text_primary"
-                        android:textSize="24sp" />
+                        <TextView
+                            android:id="@+id/num_05"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/inter_bold"
+                            android:gravity="center"
+                            android:text="01"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
 
-                </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/num_05_indicator"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/close"
+                            android:contentDescription="@string/match_indicator"
+                            android:visibility="visible" />
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="@dimen/number_ball_size"
-                    android:layout_height="@dimen/number_ball_size"
-                    android:layout_margin="@dimen/spacing_xsmall"
-                    app:cardBackgroundColor="@color/gradient_end"
-                    app:cardCornerRadius="@dimen/number_ball_radius">
+                    </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:id="@+id/num_06_indicator"
-                        android:layout_width="@dimen/indicator_size"
-                        android:layout_height="@dimen/indicator_size"
-                        android:layout_gravity="bottom|center_horizontal"
-                        android:background="@drawable/done"
-                        android:contentDescription="@string/match_indicator"
-                        android:src="@drawable/close"
-                        android:visibility="visible" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_margin="6dp"
+                        app:cardBackgroundColor="@color/number_ball_matched"
+                        app:cardCornerRadius="32dp"
+                        app:cardElevation="6dp">
 
-                    <TextView
-                        android:id="@+id/num_06"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/montserrat_black"
-                        android:gravity="center"
-                        android:text="15"
-                        android:textColor="@color/text_primary"
-                        android:textSize="24sp" />
+                        <TextView
+                            android:id="@+id/num_06"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/inter_bold"
+                            android:gravity="center"
+                            android:text="15"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
 
-                </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/num_06_indicator"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/done"
+                            android:contentDescription="@string/match_indicator"
+                            android:visibility="visible" />
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="@dimen/number_ball_size"
-                    android:layout_height="@dimen/number_ball_size"
-                    android:layout_margin="@dimen/spacing_xsmall"
-                    app:cardBackgroundColor="@color/gradient_end"
-                    app:cardCornerRadius="@dimen/number_ball_radius">
+                    </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:id="@+id/num_07_indicator"
-                        android:layout_width="@dimen/indicator_size"
-                        android:layout_height="@dimen/indicator_size"
-                        android:layout_gravity="bottom|center_horizontal"
-                        android:background="@drawable/done"
-                        android:contentDescription="@string/match_indicator"
-                        android:src="@drawable/close"
-                        android:visibility="visible" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_margin="6dp"
+                        app:cardBackgroundColor="@color/number_ball_matched"
+                        app:cardCornerRadius="32dp"
+                        app:cardElevation="6dp">
 
-                    <TextView
-                        android:id="@+id/num_07"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/montserrat_black"
-                        android:gravity="center"
-                        android:text="27"
-                        android:textColor="@color/text_primary"
-                        android:textSize="24sp" />
+                        <TextView
+                            android:id="@+id/num_07"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/inter_bold"
+                            android:gravity="center"
+                            android:text="27"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
 
-                </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/num_07_indicator"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/done"
+                            android:contentDescription="@string/match_indicator"
+                            android:visibility="visible" />
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="@dimen/number_ball_size"
-                    android:layout_height="@dimen/number_ball_size"
-                    android:layout_margin="@dimen/spacing_xsmall"
-                    app:cardBackgroundColor="@color/gradient_end"
-                    app:cardCornerRadius="@dimen/number_ball_radius">
+                    </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:id="@+id/num_08_indicator"
-                        android:layout_width="@dimen/indicator_size"
-                        android:layout_height="@dimen/indicator_size"
-                        android:layout_gravity="bottom|center_horizontal"
-                        android:background="@drawable/done"
-                        android:contentDescription="@string/match_indicator"
-                        android:src="@drawable/close"
-                        android:visibility="visible" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_margin="6dp"
+                        app:cardBackgroundColor="@color/number_ball_matched"
+                        app:cardCornerRadius="32dp"
+                        app:cardElevation="6dp">
 
-                    <TextView
-                        android:id="@+id/num_08"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/montserrat_black"
-                        android:gravity="center"
-                        android:text="58"
-                        android:textColor="@color/text_primary"
-                        android:textSize="24sp" />
+                        <TextView
+                            android:id="@+id/num_08"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/inter_bold"
+                            android:gravity="center"
+                            android:text="58"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
 
-                </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/num_08_indicator"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/done"
+                            android:contentDescription="@string/match_indicator"
+                            android:visibility="visible" />
 
-                <!-- User Bonus Number with Match Indicator -->
+                    </androidx.cardview.widget.CardView>
 
-                <!-- User Regular Numbers with Match Indicators -->
+                </LinearLayout>
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
+            <!-- Action Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/view_result_button"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
-                android:layout_marginStart="@dimen/spacing_large"
-                android:layout_marginEnd="@dimen/spacing_large"
-                android:layout_marginBottom="@dimen/spacing_large"
-                android:backgroundTint="@color/button_background"
-                android:fontFamily="@font/montserrat_bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="24dp"
+                android:backgroundTint="@color/primary"
+                android:fontFamily="@font/inter_semibold"
                 android:text="@string/view_result"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="24sp"
-                app:cornerRadius="@dimen/button_corner_radius"
-                app:elevation="@dimen/button_elevation"
+                android:textSize="18sp"
+                app:cornerRadius="16dp"
+                app:elevation="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/your_numbers_container"
                 app:rippleColor="@color/button_ripple" />
 
+            <!-- Loading Animation -->
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/loading_animation"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:layout_centerInParent="true"
                 android:layout_marginStart="64dp"
                 android:layout_marginEnd="64dp"
@@ -603,7 +625,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
-
-    <!-- Loading Progress Bar -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

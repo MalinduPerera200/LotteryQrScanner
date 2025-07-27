@@ -19,7 +19,7 @@ public class ResultDispatcherActivity extends AppCompatActivity {
         put("Govi Setha", GoviSethaResultActivity.class);
         put("Mahajana Sampatha", MahajanaSampathaResultActivity.class);
         put("Dhana Nidhanaya", DhanaNidhanayaResultActivity.class);
-
+        put("NLB Jaya", NLBJayaResultActivity.class);
     }};
 
     @Override

@@ -108,7 +108,7 @@ public class ResultsActivity extends AppCompatActivity {
         specialNumTextView1 = findViewById(R.id.specialNumberUser);
 
         // Official Numbers
-        int[] officialNumIds = {R.id.num_01, R.id.num_02, R.id.num_03, R.id.num_04};
+        int[] officialNumIds = {R.id.num_01, R.id.num_02, R.id.num_03, R.id.num_05};
         for (int i = 0; i < 4; i++) {
             officialNumTextViews[i] = findViewById(officialNumIds[i]);
         }

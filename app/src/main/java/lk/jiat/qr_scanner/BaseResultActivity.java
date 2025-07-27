@@ -154,12 +154,14 @@ public abstract class BaseResultActivity extends AppCompatActivity {
         });
     }
 
+    // --- Nested QRParser Class ---
     public static class QRParser {
         private String lotteryName = "";
         private String drawNumber = "";
         private String singleLetter = "";
         private String secondLetter = "";
         private String fiveDigitNumber = "";
+        private String sixDigitNumber = ""; // <<< NEW: ඉලක්කම් 6 අංකය සඳහා
         private final List<String> winningNumbers = new ArrayList<>();
         private boolean valid = false;
 
@@ -177,6 +179,7 @@ public abstract class BaseResultActivity extends AppCompatActivity {
             Pattern letterPattern = Pattern.compile("[A-Z]");
             Pattern numberPattern = Pattern.compile("\\d{1,2}");
             Pattern fiveDigitPattern = Pattern.compile("\\d{5}");
+            Pattern sixDigitPattern = Pattern.compile("\\d{6}"); // <<< NEW: නව pattern එක
 
             boolean drawNoFound = false;
             for (String part : parts) {
@@ -191,21 +194,21 @@ public abstract class BaseResultActivity extends AppCompatActivity {
                 } else {
                     if (singleLetter.isEmpty() && letterPattern.matcher(part).matches() && part.length() == 1) {
                         singleLetter = part;
+                    } else if (sixDigitPattern.matcher(part).matches()) { // <<< NEW
+                        sixDigitNumber = part;
+                    } else if (fiveDigitPattern.matcher(part).matches()) {
+                        fiveDigitNumber = part;
                     } else if (numberPattern.matcher(part).matches()) {
                         winningNumbers.add(part);
-                    }
-                    else if (!winningNumbers.isEmpty() && secondLetter.isEmpty() && letterPattern.matcher(part).matches() && part.length() == 1) {
+                    } else if (!winningNumbers.isEmpty() && secondLetter.isEmpty() && letterPattern.matcher(part).matches() && part.length() == 1) {
                         secondLetter = part;
-                    }
-                    else if (fiveDigitPattern.matcher(part).matches()) {
-                        fiveDigitNumber = part;
                     }
                 }
             }
 
             lotteryName = lotteryNameBuilder.toString().trim();
-            // Update validation to ensure it's a valid QR
-            valid = !lotteryName.isEmpty() && !drawNumber.isEmpty() && !winningNumbers.isEmpty();
+            // මහජන සම්පත වැනි ලොතරැයි වල winningNumbers list එක හිස් විය හැකි නිසා validation එක වෙනස් කරයි
+            valid = !lotteryName.isEmpty() && !drawNumber.isEmpty();
         }
 
         // Getters
@@ -213,8 +216,9 @@ public abstract class BaseResultActivity extends AppCompatActivity {
         public String getLotteryName() { return lotteryName; }
         public String getDrawNumber() { return drawNumber; }
         public String getSingleLetter() { return singleLetter; }
-        public List<String> getWinningNumbers() { return winningNumbers; }
         public String getSecondLetter() { return secondLetter; }
         public String getFiveDigitNumber() { return fiveDigitNumber; }
+        public String getSixDigitNumber() { return sixDigitNumber; } // <<< NEW
+        public List<String> getWinningNumbers() { return winningNumbers; }
     }
 }

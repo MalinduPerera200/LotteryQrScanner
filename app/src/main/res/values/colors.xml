@@ -8,8 +8,6 @@
     <color name="nlb_pink">#E026A3</color>
     <color name="nlb_purple">#6A3B98</color> <color name="dlb_green">#BEC445</color>
 
-    <color name="text_primary">#212121</color>
-    <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="red">#ff0000</color>
     <color name="light_gray_background">#F8F9FA</color>
@@ -33,7 +31,6 @@
 
         <!-- Button Colors -->
         <color name="button_background">#4CAF50</color>
-        <color name="button_ripple">#66FFFFFF</color>
 
         <!-- Match Indicator Colors -->
         <color name="match_indicator_background">#4CAF50</color>
@@ -43,5 +40,15 @@
         <color name="progress_track">#33FFFFFF</color>
 
         <color name="text_secondary">#757575</color>
-
+    <!-- Add these to your colors.xml file -->
+    <color name="primary">#1E88E5</color>
+    <color name="primary_variant">#1565C0</color>
+    <color name="background">#FAFAFA</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="text_primary">#212121</color>
+    <color name="white">#FFFFFF</color>
+    <color name="number_ball_matched">#4CAF50</color>
+    <color name="number_ball_unmatched">#E0E0E0</color>
+    <color name="bonus_ball_color">#FF5722</color>
+    <color name="button_ripple">#90CAF9</color>
 </resources>

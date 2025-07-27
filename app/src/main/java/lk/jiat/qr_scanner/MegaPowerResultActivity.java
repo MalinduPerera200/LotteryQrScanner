@@ -57,7 +57,7 @@ public class MegaPowerResultActivity extends BaseResultActivity {
         officialNumTextViews[0] = findViewById(R.id.num_01);
         officialNumTextViews[1] = findViewById(R.id.num_02);
         officialNumTextViews[2] = findViewById(R.id.num_03);
-        officialNumTextViews[3] = findViewById(R.id.num_04);
+        officialNumTextViews[3] = findViewById(R.id.num_05);
 
         // User's Numbers UI
         englishLetterTextViewUser = findViewById(R.id.english_letter_user);

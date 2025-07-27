@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Content Margins & Spacing -->
+    <dimen name="content_vertical_margin">16dp</dimen>
+    <dimen name="section_spacing_medium">12dp</dimen>
+    <dimen name="section_spacing_large">24dp</dimen>
+
+    <!-- Card Dimensions -->
+    <dimen name="logo_card_height">140dp</dimen>
+    <dimen name="info_card_height">48dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="lottery_name_text_size">24sp</dimen>
+    <dimen name="section_title_text_size">20sp</dimen>
+
+    <!-- Button -->
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="logo_padding">16dp</dimen>
+</resources>

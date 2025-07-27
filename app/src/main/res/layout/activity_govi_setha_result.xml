@@ -311,7 +311,7 @@
                     app:cardCornerRadius="@dimen/number_ball_radius">
 
                     <TextView
-                        android:id="@+id/num_04"
+                        android:id="@+id/num_05"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/montserrat_black"

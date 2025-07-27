@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Content Margins & Spacing -->
+    <dimen name="content_horizontal_margin">48dp</dimen>
+    <dimen name="content_vertical_margin">40dp</dimen>
+    <dimen name="section_spacing_medium">24dp</dimen>
+    <dimen name="section_spacing_large">48dp</dimen>
+
+    <!-- Max Content Width -->
+    <dimen name="max_content_width">700dp</dimen>
+    <dimen name="max_button_width">500dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="lottery_name_text_size">36sp</dimen>
+    <dimen name="section_title_text_size">26sp</dimen>
+    <dimen name="info_text_size">20sp</dimen>
+    <dimen name="number_text_size">24sp</dimen>
+    <dimen name="button_text_size">20sp</dimen>
+
+    <!-- Card Dimensions -->
+    <dimen name="logo_card_height">240dp</dimen>
+    <dimen name="info_card_height">64dp</dimen>
+    <dimen name="card_corner_radius_large">20dp</dimen>
+    <dimen name="card_corner_radius_medium">16dp</dimen>
+
+    <!-- Number Ball Dimensions -->
+    <dimen name="number_ball_size">72dp</dimen>
+    <dimen name="number_ball_radius">36dp</dimen>
+    <dimen name="number_ball_margin">8dp</dimen>
+    <dimen name="numbers_container_padding">20dp</dimen>
+
+    <!-- Indicator Dimensions -->
+    <dimen name="indicator_size">22dp</dimen>
+    <dimen name="indicator_margin_bottom">6dp</dimen>
+
+    <!-- Button -->
+    <dimen name="button_height">64dp</dimen>
+    <dimen name="logo_padding">32dp</dimen>
+    <dimen name="loading_animation_size">160dp</dimen>
+</resources>

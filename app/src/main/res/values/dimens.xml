@@ -1,30 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Spacing Values -->
-    <dimen name="spacing_xsmall">4dp</dimen>
-    <dimen name="spacing_small">8dp</dimen>
-    <dimen name="spacing_medium">16dp</dimen>
-    <dimen name="spacing_large">24dp</dimen>
-    <dimen name="spacing_xlarge">32dp</dimen>
+    <!-- Content Margins & Spacing -->
+    <dimen name="content_horizontal_margin">16dp</dimen>
+    <dimen name="content_vertical_margin">24dp</dimen>
+    <dimen name="section_spacing_small">8dp</dimen>
+    <dimen name="section_spacing_medium">16dp</dimen>
+    <dimen name="section_spacing_large">32dp</dimen>
+    <dimen name="card_spacing_small">8dp</dimen>
 
-    <!-- Card Properties -->
-    <dimen name="card_corner_radius">16dp</dimen>
-    <dimen name="card_corner_radius_small">12dp</dimen>
-    <dimen name="card_elevation">8dp</dimen>
-    <dimen name="card_elevation_small">4dp</dimen>
-    <dimen name="card_elevation_medium">6dp</dimen>
+    <!-- Max Content Width -->
+    <dimen name="max_content_width">600dp</dimen>
+    <dimen name="max_button_width">400dp</dimen>
 
-    <!-- Number Ball Properties -->
-    <dimen name="number_ball_size">60dp</dimen>
-    <dimen name="number_ball_radius">30dp</dimen>
+    <!-- Text Sizes -->
+    <dimen name="lottery_name_text_size">28sp</dimen>
+    <dimen name="section_title_text_size">22sp</dimen>
+    <dimen name="info_text_size">16sp</dimen>
+    <dimen name="number_text_size">20sp</dimen>
+    <dimen name="button_text_size">16sp</dimen>
 
-    <!-- Match Indicator Properties -->
-    <dimen name="indicator_size">20dp</dimen>
+    <!-- Card Dimensions -->
+    <dimen name="logo_card_height">180dp</dimen>
+    <dimen name="info_card_height">56dp</dimen>
+    <dimen name="card_corner_radius_small">8dp</dimen>
+    <dimen name="card_corner_radius_medium">12dp</dimen>
+    <dimen name="card_corner_radius_large">16dp</dimen>
+    <dimen name="card_elevation_small">2dp</dimen>
+    <dimen name="card_elevation_medium">4dp</dimen>
+    <dimen name="card_elevation_large">6dp</dimen>
 
-    <!-- Button Properties -->
-    <dimen name="button_corner_radius">12dp</dimen>
-    <dimen name="button_elevation">4dp</dimen>
+    <!-- Number Ball Dimensions -->
+    <dimen name="number_ball_size">56dp</dimen>
+    <dimen name="number_ball_radius">28dp</dimen>
+    <dimen name="number_ball_margin">4dp</dimen>
+    <dimen name="numbers_container_padding">12dp</dimen>
 
-    <!-- Progress Indicator -->
-    <dimen name="progress_track">4dp</dimen>
+    <!-- Indicator Dimensions -->
+    <dimen name="indicator_size">18dp</dimen>
+    <dimen name="indicator_margin_bottom">2dp</dimen>
+
+    <!-- Button & Other Components -->
+    <dimen name="button_height">56dp</dimen>
+    <dimen name="logo_padding">20dp</dimen>
+    <dimen name="loading_animation_size">120dp</dimen>
 </resources>
+
