@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Spacing and Margins -->
+    <dimen name="spacing_xsmall">4dp</dimen>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_medium">16dp</dimen>
+    <dimen name="spacing_large">24dp</dimen>
+    <dimen name="spacing_xlarge">32dp</dimen>
+    <dimen name="spacing_xxlarge">48dp</dimen>
+
     <!-- Content Margins & Spacing -->
     <dimen name="content_horizontal_margin">16dp</dimen>
     <dimen name="content_vertical_margin">24dp</dimen>
@@ -22,9 +30,11 @@
     <!-- Card Dimensions -->
     <dimen name="logo_card_height">180dp</dimen>
     <dimen name="info_card_height">56dp</dimen>
+    <dimen name="card_corner_radius">16dp</dimen>
     <dimen name="card_corner_radius_small">8dp</dimen>
     <dimen name="card_corner_radius_medium">12dp</dimen>
     <dimen name="card_corner_radius_large">16dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
     <dimen name="card_elevation_small">2dp</dimen>
     <dimen name="card_elevation_medium">4dp</dimen>
     <dimen name="card_elevation_large">6dp</dimen>
@@ -41,7 +51,52 @@
 
     <!-- Button & Other Components -->
     <dimen name="button_height">56dp</dimen>
+    <dimen name="button_corner_radius">16dp</dimen>
+    <dimen name="button_elevation">4dp</dimen>
     <dimen name="logo_padding">20dp</dimen>
     <dimen name="loading_animation_size">120dp</dimen>
-</resources>
 
+    <!-- Specific Layout Dimensions -->
+    <dimen name="winning_numbers_container_width">500dp</dimen>
+    <dimen name="winning_numbers_container_height">100dp</dimen>
+    <dimen name="special_number_card_width">300dp</dimen>
+
+    <!-- Font Sizes for Different Screen Densities -->
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_medium">14sp</dimen>
+    <dimen name="text_size_large">16sp</dimen>
+    <dimen name="text_size_xlarge">18sp</dimen>
+    <dimen name="text_size_xxlarge">20sp</dimen>
+    <dimen name="text_size_header">24sp</dimen>
+    <dimen name="text_size_title">28sp</dimen>
+    <dimen name="text_size_display">36sp</dimen>
+
+    <!-- Image and Icon Sizes -->
+    <dimen name="icon_size_small">16dp</dimen>
+    <dimen name="icon_size_medium">24dp</dimen>
+    <dimen name="icon_size_large">32dp</dimen>
+    <dimen name="icon_size_xlarge">48dp</dimen>
+
+    <!-- Loading Animation -->
+    <dimen name="loading_container_margin">64dp</dimen>
+
+    <!-- Specific Component Dimensions -->
+    <dimen name="lottery_logo_height">280dp</dimen>
+    <dimen name="date_card_padding">16dp</dimen>
+    <dimen name="draw_number_padding">16dp</dimen>
+
+    <!-- Touch Target Sizes (minimum 48dp for accessibility) -->
+    <dimen name="touch_target_size">48dp</dimen>
+    <dimen name="touch_target_size_large">56dp</dimen>
+
+    <!-- Divider and Border Sizes -->
+    <dimen name="divider_height">1dp</dimen>
+    <dimen name="border_width">2dp</dimen>
+    <dimen name="border_width_thick">4dp</dimen>
+
+    <!-- Shadow and Elevation -->
+    <dimen name="shadow_elevation_low">2dp</dimen>
+    <dimen name="shadow_elevation_medium">4dp</dimen>
+    <dimen name="shadow_elevation_high">8dp</dimen>
+
+</resources>

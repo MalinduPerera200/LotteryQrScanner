@@ -2,34 +2,39 @@ package lk.jiat.qr_scanner;
 
 import android.content.Intent;
 import android.view.View;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.cardview.widget.CardView;
-import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentSnapshot;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
-import java.util.Set;
 
-public class MegaPowerResultActivity extends BaseResultActivity {
+import lk.jiat.qr_scanner.constants.LotteryConstants;
 
-    private TextView lotteryNameTextView, dateTextView, drawNoTextView;
+/**
+ * MegaPowerResultActivity with Color-Based Match System
+ * Indicators නැතුව, colors වෙනස් කරන version එක
+ */
+public class MegaPowerResultActivity extends BaseLotteryActivity {
+
+    // UI Components
     private TextView englishLetterTextView, bonusNumTextView;
     private TextView englishLetterTextViewUser, bonusNumTextViewUser;
     private final TextView[] officialNumTextViews = new TextView[4];
     private final TextView[] userNumTextViews = new TextView[4];
-    private ImageView logoImageView;
-    private final ImageView[] officialNumImageViews = new ImageView[4];
-    private final ImageView[] userNumImageViews = new ImageView[4];
-    private ImageView englishLetterImOfficial, englishLetterImUser, bonusNumImOfficial, bonusNumImUser;
+
+    // CardView references for color changes
+    private final CardView[] officialCards = new CardView[6];  // Letter, Bonus, 4 Numbers
+    private final CardView[] userCards = new CardView[6];
+
+    // ImageView references (to hide them)
+    private final ImageView[] officialIndicators = new ImageView[6];
+    private final ImageView[] userIndicators = new ImageView[6];
+
     private CardView bonusNumberCard, bonusNumberCardUser;
 
-    // Data Holders
-    private MatchResults matchResults;
+    // Match results
+    private MegaPowerMatchResults matchResults;
 
     @Override
     protected int getLayoutResourceId() {
@@ -38,92 +43,117 @@ public class MegaPowerResultActivity extends BaseResultActivity {
 
     @Override
     protected String getFirestoreCollectionName() {
-        return "Mega_Power";
+        return LotteryConstants.Collections.MEGA_POWER;
     }
 
     @Override
-    protected void initializeViews() {
-        matchResults = new MatchResults();
+    protected String getLotteryDisplayName() {
+        return LotteryConstants.LotteryTypes.MEGA_POWER;
+    }
 
-        // Logo, Name, Date, Draw
-        logoImageView = findViewById(R.id.logo_image_view);
-        lotteryNameTextView = findViewById(R.id.lottery_name);
-        dateTextView = findViewById(R.id.date);
-        drawNoTextView = findViewById(R.id.draw_no);
+    @Override
+    protected int getLogoResourceId() {
+        return LotteryConstants.LotteryConfig.getLogoResource(LotteryConstants.LotteryTypes.MEGA_POWER);
+    }
 
-        // Official Winning Numbers UI
+    @Override
+    protected void initializeSpecificViews() {
+        matchResults = new MegaPowerMatchResults();
+
+        // Initialize text views
         englishLetterTextView = findViewById(R.id.english_letter);
         bonusNumTextView = findViewById(R.id.bonusNumber);
+        englishLetterTextViewUser = findViewById(R.id.english_letter_user);
+        bonusNumTextViewUser = findViewById(R.id.bonus_num_user);
+
+        // Initialize number text views
         officialNumTextViews[0] = findViewById(R.id.num_01);
         officialNumTextViews[1] = findViewById(R.id.num_02);
         officialNumTextViews[2] = findViewById(R.id.num_03);
-        officialNumTextViews[3] = findViewById(R.id.num_05);
+        officialNumTextViews[3] = findViewById(R.id.num_04);
 
-        // User's Numbers UI
-        englishLetterTextViewUser = findViewById(R.id.english_letter_user);
-        bonusNumTextViewUser = findViewById(R.id.bonus_num_user);
         userNumTextViews[0] = findViewById(R.id.num_05);
         userNumTextViews[1] = findViewById(R.id.num_06);
         userNumTextViews[2] = findViewById(R.id.num_07);
         userNumTextViews[3] = findViewById(R.id.num_08);
 
-        // Match Indicator ImageViews (Official)
-        englishLetterImOfficial = findViewById(R.id.english_letter_indicator2);
-        bonusNumImOfficial = findViewById(R.id.english_letter_indicator3);
-        officialNumImageViews[0] = findViewById(R.id.english_letter_indicator4);
-        officialNumImageViews[1] = findViewById(R.id.english_letter_indicator5);
-        officialNumImageViews[2] = findViewById(R.id.english_letter_indicator6);
-        officialNumImageViews[3] = findViewById(R.id.english_letter_indicator7);
+        // Initialize CardViews for color changes
+        initializeCardViews();
 
-        // Match Indicator ImageViews (User)
-        englishLetterImUser = findViewById(R.id.english_letter_indicator);
-        bonusNumImUser = findViewById(R.id.bonus_num_indicator);
-        userNumImageViews[0] = findViewById(R.id.num_05_indicator);
-        userNumImageViews[1] = findViewById(R.id.num_06_indicator);
-        userNumImageViews[2] = findViewById(R.id.num_07_indicator);
-        userNumImageViews[3] = findViewById(R.id.num_08_indicator);
+        // Initialize indicators (to hide them)
+        initializeIndicators();
 
-        // CardViews for visibility control
+        // Initialize bonus card views
         bonusNumberCard = findViewById(R.id.bonusNumberCard);
         bonusNumberCardUser = findViewById(R.id.bonusNumberCard1);
+    }
 
-        // Setup "View Price" button click listener
-        if (viewPriceButton != null) {
-            viewPriceButton.setOnClickListener(v -> {
-                v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_click_animation));
-                Intent intent = new Intent(this, ViewPriceActivity.class);
-                // Pass all match results to the next activity
-                matchResults.addToIntent(intent, "Mega Power");
-                startActivity(intent);
-            });
+    private void initializeCardViews() {
+        // Find CardViews by finding parent of TextViews
+        if (englishLetterTextView != null) {
+            officialCards[0] = (CardView) englishLetterTextView.getParent();
         }
+        if (bonusNumTextView != null) {
+            officialCards[1] = (CardView) bonusNumTextView.getParent();
+        }
+
+        // Official number cards
+        for (int i = 0; i < officialNumTextViews.length; i++) {
+            if (officialNumTextViews[i] != null) {
+                officialCards[i + 2] = (CardView) officialNumTextViews[i].getParent();
+            }
+        }
+
+        // User cards
+        if (englishLetterTextViewUser != null) {
+            userCards[0] = (CardView) englishLetterTextViewUser.getParent();
+        }
+        if (bonusNumTextViewUser != null) {
+            userCards[1] = (CardView) bonusNumTextViewUser.getParent();
+        }
+
+        // User number cards
+        for (int i = 0; i < userNumTextViews.length; i++) {
+            if (userNumTextViews[i] != null) {
+                userCards[i + 2] = (CardView) userNumTextViews[i].getParent();
+            }
+        }
+    }
+
+    private void initializeIndicators() {
+        // Official indicators
+        officialIndicators[0] = findViewById(R.id.english_letter_indicator2);
+        officialIndicators[1] = findViewById(R.id.english_letter_indicator3);
+        officialIndicators[2] = findViewById(R.id.english_letter_indicator4);
+        officialIndicators[3] = findViewById(R.id.english_letter_indicator5);
+        officialIndicators[4] = findViewById(R.id.english_letter_indicator6);
+        officialIndicators[5] = findViewById(R.id.english_letter_indicator7);
+
+        // User indicators
+        userIndicators[0] = findViewById(R.id.english_letter_indicator);
+        userIndicators[1] = findViewById(R.id.bonus_num_indicator);
+        userIndicators[2] = findViewById(R.id.num_05_indicator);
+        userIndicators[3] = findViewById(R.id.num_06_indicator);
+        userIndicators[4] = findViewById(R.id.num_07_indicator);
+        userIndicators[5] = findViewById(R.id.num_08_indicator);
     }
 
     @Override
-    protected void displayAndCompareResults(DocumentSnapshot document, QRParser parser) {
-        // 1. Parse official and user results into helper classes
+    protected void displayLotteryResults(DocumentSnapshot document, QRParser parser) {
         OfficialResults officialResults = new OfficialResults(document);
         UserResults userResults = new UserResults(parser.getWinningNumbers(), parser.getSingleLetter());
 
-        // 2. Display the data on the UI
         updateOfficialDisplay(officialResults);
         updateUserDisplay(userResults);
+        updateMatchColorsImproved(officialResults, userResults);
+    }
 
-        // 3. Compare the numbers and update match results
-        compareNumbers(officialResults, userResults);
-
-        // 4. Show match indicators (tick/cross) on the UI
-        updateMatchIndicators(officialResults, userResults);
+    @Override
+    protected MatchResults getMatchResults() {
+        return matchResults;
     }
 
     private void updateOfficialDisplay(OfficialResults official) {
-        logoImageView.setImageResource(R.drawable.mega_logo);
-        lotteryNameTextView.setText("Mega Power");
-
-        if (official.drawDate != null) {
-            dateTextView.setText(new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(official.drawDate.toDate()));
-        }
-        drawNoTextView.setText(official.drawNo != null ? "Draw #" + official.drawNo : "N/A");
         englishLetterTextView.setText(official.engLetter != null ? official.engLetter : "N/A");
 
         // Bonus number visibility
@@ -134,6 +164,7 @@ public class MegaPowerResultActivity extends BaseResultActivity {
             bonusNumberCard.setVisibility(View.GONE);
         }
 
+        // Regular numbers
         for (int i = 0; i < officialNumTextViews.length; i++) {
             if (i < official.numbersList.size()) {
                 officialNumTextViews[i].setText(String.valueOf(official.numbersList.get(i)));
@@ -154,6 +185,7 @@ public class MegaPowerResultActivity extends BaseResultActivity {
             bonusNumberCardUser.setVisibility(View.GONE);
         }
 
+        // Regular numbers
         for (int i = 0; i < userNumTextViews.length; i++) {
             if (i < user.numbersList.size()) {
                 userNumTextViews[i].setText(String.valueOf(user.numbersList.get(i)));
@@ -163,84 +195,103 @@ public class MegaPowerResultActivity extends BaseResultActivity {
         }
     }
 
-    private void compareNumbers(OfficialResults official, UserResults user) {
-        // Compare English Letter
-        matchResults.isLetterMatched = official.engLetter != null && official.engLetter.equals(user.letter);
+    /**
+     * Update match colors using the new color-based system
+     */
+    private void updateMatchColorsImproved(OfficialResults official, UserResults user) {
+        // Prepare data arrays
+        List<String> officialData = new ArrayList<>();
+        List<String> userData = new ArrayList<>();
 
-        // Compare Bonus Number
-        matchResults.isBonusMatched = official.bonusNum != null && official.bonusNum.equals(user.bonusNum);
+        // Add letter
+        officialData.add(official.engLetter != null ? official.engLetter : "");
+        userData.add(user.letter != null ? user.letter : "");
 
-        // Compare Regular Numbers
-        Set<Long> officialNumbersSet = new HashSet<>(official.numbersList);
-        for (Long userNum : user.numbersList) {
-            if (officialNumbersSet.contains(userNum)) {
-                matchResults.matchedNumbersCount++;
-                matchResults.matchedNumbersList.add(userNum);
+        // Add bonus (if exists)
+        if (official.bonusNum != null && user.bonusNum != null) {
+            officialData.add(String.valueOf(official.bonusNum));
+            userData.add(String.valueOf(user.bonusNum));
+        } else {
+            officialData.add("");
+            userData.add("");
+        }
+
+        // Add numbers
+        for (Long num : official.numbersList) {
+            officialData.add(String.valueOf(num));
+        }
+        for (Long num : user.numbersList) {
+            userData.add(String.valueOf(num));
+        }
+
+        // Convert to arrays
+        String[] officialArray = officialData.toArray(new String[0]);
+        String[] userArray = userData.toArray(new String[0]);
+
+        // Use color-based system
+        ColorBasedMatchSystem.ColorMatchResult result = ColorBasedMatchSystem.updateMegaPowerWithColors(
+                officialArray,
+                userArray,
+                officialCards,
+                userCards,
+                officialIndicators,
+                userIndicators,
+                this
+        );
+
+        // Update match results for prize calculation
+        matchResults.isLetterMatched = result.isLetterMatched;
+        matchResults.isBonusMatched = result.isBonusMatched;
+        matchResults.matchedNumbersCount = result.matchedNumbersCount;
+
+        // Convert matched numbers to Long list
+        matchResults.matchedNumbersList.clear();
+        for (String numStr : result.matchedNumbers) {
+            try {
+                matchResults.matchedNumbersList.add(Long.parseLong(numStr));
+            } catch (NumberFormatException e) {
+                android.util.Log.w("MegaPower", "Invalid number: " + numStr);
             }
         }
+
+        // Debug logging
+        ColorBasedMatchSystem.logColorMatchResults(result, "Mega Power");
+
+        android.util.Log.d("MegaPower", "=== Color-Based Results ===");
+        android.util.Log.d("MegaPower", "Letter: " + official.engLetter + " vs " + user.letter + " = " + result.isLetterMatched);
+        android.util.Log.d("MegaPower", "Bonus: " + official.bonusNum + " vs " + user.bonusNum + " = " + result.isBonusMatched);
+        android.util.Log.d("MegaPower", "Numbers: " + result.matchedNumbersCount + " matches");
     }
 
-    private void updateMatchIndicators(OfficialResults official, UserResults user) {
-        setMatchImage(matchResults.isLetterMatched, englishLetterImOfficial, englishLetterImUser);
-        setMatchImage(matchResults.isBonusMatched, bonusNumImOfficial, bonusNumImUser);
-
-        Set<Long> officialNumbersSet = new HashSet<>(official.numbersList);
-        Set<Long> userNumbersSet = new HashSet<>(user.numbersList);
-
-        // Update indicators for official numbers row
-        for (int i = 0; i < official.numbersList.size(); i++) {
-            boolean isMatched = userNumbersSet.contains(official.numbersList.get(i));
-            setMatchImage(isMatched, officialNumImageViews[i]);
-        }
-
-        // Update indicators for user numbers row
-        for (int i = 0; i < user.numbersList.size(); i++) {
-            boolean isMatched = officialNumbersSet.contains(user.numbersList.get(i));
-            setMatchImage(isMatched, userNumImageViews[i]);
-        }
-    }
-
-    private void setMatchImage(boolean isMatch, ImageView... imageViews) {
-        int imageRes = isMatch ? R.drawable.done : R.drawable.close;
-        for (ImageView imageView : imageViews) {
-            if (imageView != null) {
-                imageView.setImageResource(imageRes);
-            }
-        }
-    }
-
-    // --- Helper Classes for Data Handling ---
-
-    private static class MatchResults {
+    // Helper Classes (same as before)
+    private static class MegaPowerMatchResults extends MatchResults {
         boolean isLetterMatched = false;
         boolean isBonusMatched = false;
         int matchedNumbersCount = 0;
         ArrayList<Long> matchedNumbersList = new ArrayList<>();
 
-        void addToIntent(Intent intent, String lotteryName) {
-            intent.putExtra("LotteryName", lotteryName);
-            intent.putExtra("IsLetterMatched", isLetterMatched);
-            intent.putExtra("IsBonusMatched", isBonusMatched);
-            intent.putExtra("MatchedNumbersCount", matchedNumbersCount);
-            intent.putExtra("MatchedNumbersList", matchedNumbersList);
+        @Override
+        public void addToIntent(Intent intent, String lotteryName) {
+            intent.putExtra(LotteryConstants.IntentExtras.LOTTERY_NAME, lotteryName);
+            intent.putExtra(LotteryConstants.IntentExtras.IS_LETTER_MATCHED, isLetterMatched);
+            intent.putExtra(LotteryConstants.IntentExtras.IS_BONUS_MATCHED, isBonusMatched);
+            intent.putExtra(LotteryConstants.IntentExtras.MATCHED_NUMBERS_COUNT, matchedNumbersCount);
+            intent.putExtra(LotteryConstants.IntentExtras.MATCHED_NUMBERS_LIST, matchedNumbersList);
         }
     }
 
     private static class OfficialResults {
-        Timestamp drawDate;
-        Long drawNo;
         String engLetter;
         Long bonusNum;
         final List<Long> numbersList = new ArrayList<>();
 
         OfficialResults(DocumentSnapshot doc) {
-            this.drawDate = doc.getTimestamp("Date");
-            this.drawNo = doc.getLong("Draw_No");
-            this.engLetter = doc.getString("English_Letter");
-            this.bonusNum = doc.getLong("Bonus_Number");
+            this.engLetter = doc.getString(LotteryConstants.FirestoreFields.ENGLISH_LETTER);
+            this.bonusNum = doc.getLong(LotteryConstants.FirestoreFields.BONUS_NUMBER);
 
             for (int i = 1; i <= 4; i++) {
-                Long number = doc.getLong("Number0" + i);
+                String fieldName = "Number0" + i;
+                Long number = doc.getLong(fieldName);
                 if (number != null) {
                     numbersList.add(number);
                 }
@@ -256,7 +307,6 @@ public class MegaPowerResultActivity extends BaseResultActivity {
         UserResults(List<String> qrNumbers, String qrLetter) {
             this.letter = qrLetter;
 
-            // Mega Power has a bonus number, so the list size is >= 5
             boolean hasBonus = qrNumbers.size() >= 5;
             int startIndex = hasBonus ? 1 : 0;
 
@@ -272,7 +322,7 @@ public class MegaPowerResultActivity extends BaseResultActivity {
                 try {
                     numbersList.add(Long.parseLong(qrNumbers.get(startIndex + i)));
                 } catch (NumberFormatException e) {
-                    // Ignore if a number is invalid
+                    android.util.Log.w("MegaPower", "Invalid user number: " + qrNumbers.get(startIndex + i));
                 }
             }
         }

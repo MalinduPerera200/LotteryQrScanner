@@ -2,34 +2,35 @@ package lk.jiat.qr_scanner;
 
 import android.content.Intent;
 import android.view.View;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentSnapshot;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
-public class DhanaNidhanayaResultActivity extends BaseResultActivity {
+import lk.jiat.qr_scanner.constants.LotteryConstants;
 
-    // UI Components
-    private TextView lotteryNameTextView, dateTextView, drawNoTextView;
+/**
+ * Refactored DhanaNidhanayaResultActivity using the new base class and improved architecture.
+ * Now focuses only on Dhana Nidhanaya specific logic.
+ */
+public class DhanaNidhanayaResultActivity extends BaseLotteryActivity {
+
+    // Dhana Nidhanaya specific UI components
     private TextView officialLetter1, officialLetter2, official5Digit;
     private TextView userLetter1, userLetter2, user5Digit;
     private final TextView[] officialNumTextViews = new TextView[4];
     private final TextView[] userNumTextViews = new TextView[4];
-    private ImageView logoImageView;
     private final ImageView[] officialNumImageViews = new ImageView[4];
     private final ImageView[] userNumImageViews = new ImageView[4];
     private ImageView officialLetter1Indicator, officialLetter2Indicator, official5DigitIndicator;
     private ImageView userLetter1Indicator, userLetter2Indicator, user5DigitIndicator;
 
-    private MatchResults matchResults;
+    // Match results specific to Dhana Nidhanaya
+    private DhanaNidhanayaMatchResults matchResults;
 
     @Override
     protected int getLayoutResourceId() {
@@ -38,62 +39,84 @@ public class DhanaNidhanayaResultActivity extends BaseResultActivity {
 
     @Override
     protected String getFirestoreCollectionName() {
-        return "Dhana_Nidhanaya";
+        return LotteryConstants.Collections.DHANA_NIDHANAYA;
     }
 
     @Override
-    protected void initializeViews() {
-        matchResults = new MatchResults();
+    protected String getLotteryDisplayName() {
+        return LotteryConstants.LotteryTypes.DHANA_NIDHANAYA;
+    }
 
-        logoImageView = findViewById(R.id.logo_image_view);
-        lotteryNameTextView = findViewById(R.id.lottery_name);
-        dateTextView = findViewById(R.id.date);
-        drawNoTextView = findViewById(R.id.draw_no);
+    @Override
+    protected int getLogoResourceId() {
+        return LotteryConstants.LotteryConfig.getLogoResource(LotteryConstants.LotteryTypes.DHANA_NIDHANAYA);
+    }
 
-        // Official UI
+    @Override
+    protected void initializeSpecificViews() {
+        matchResults = new DhanaNidhanayaMatchResults();
+
+        // Initialize Dhana Nidhanaya specific UI components
+        initializeLetterViews();
+        initializeSpecialNumberViews();
+        initializeNumberViews();
+        initializeIndicatorViews();
+    }
+
+    private void initializeLetterViews() {
+        // Official letters
         officialLetter1 = findViewById(R.id.english_letter);
+
+        // User letters
+        userLetter1 = findViewById(R.id.english_letter_user);
+        userLetter2 = findViewById(R.id.second_english_letter_user);
+    }
+
+    private void initializeSpecialNumberViews() {
+        // Special 5-digit numbers
         official5Digit = findViewById(R.id.special_number);
+        user5Digit = findViewById(R.id.special_number_user);
+    }
+
+    private void initializeNumberViews() {
+        // Official numbers
         officialNumTextViews[0] = findViewById(R.id.num_01);
         officialNumTextViews[1] = findViewById(R.id.num_02);
         officialNumTextViews[2] = findViewById(R.id.num_03);
         officialNumTextViews[3] = findViewById(R.id.num_05);
 
-        // User UI
-        userLetter1 = findViewById(R.id.english_letter_user);
-        userLetter2 = findViewById(R.id.second_english_letter_user);
-        user5Digit = findViewById(R.id.special_number_user); // <<< නිවැරදි කරන ලදී
-        userNumTextViews[0] = findViewById(R.id.num_05);
+        // User numbers (corrected IDs to match the XML)
+        userNumTextViews[0] = findViewById(R.id.num_05_user); // Now correctly named
         userNumTextViews[1] = findViewById(R.id.num_06);
         userNumTextViews[2] = findViewById(R.id.num_07);
         userNumTextViews[3] = findViewById(R.id.num_08);
+    }
 
-        // Indicators
+    private void initializeIndicatorViews() {
+        // Official indicators
         officialLetter1Indicator = findViewById(R.id.english_letter_indicator2);
         official5DigitIndicator = findViewById(R.id.special_number_indicator);
+
+        // User indicators
         userLetter1Indicator = findViewById(R.id.english_letter_indicator);
         userLetter2Indicator = findViewById(R.id.second_english_letter_indicator);
         user5DigitIndicator = findViewById(R.id.special_number_user_indicator);
+
+        // Number indicators - Official
         officialNumImageViews[0] = findViewById(R.id.english_letter_indicator4);
         officialNumImageViews[1] = findViewById(R.id.english_letter_indicator5);
         officialNumImageViews[2] = findViewById(R.id.english_letter_indicator6);
         officialNumImageViews[3] = findViewById(R.id.english_letter_indicator7);
+
+        // Number indicators - User
         userNumImageViews[0] = findViewById(R.id.num_05_indicator);
         userNumImageViews[1] = findViewById(R.id.num_06_indicator);
         userNumImageViews[2] = findViewById(R.id.num_07_indicator);
         userNumImageViews[3] = findViewById(R.id.num_08_indicator);
-
-        if (viewPriceButton != null) {
-            viewPriceButton.setOnClickListener(v -> {
-                v.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_click_animation));
-                Intent intent = new Intent(this, ViewPriceActivity.class);
-                matchResults.addToIntent(intent, "Dhana Nidhanaya");
-                startActivity(intent);
-            });
-        }
     }
 
     @Override
-    protected void displayAndCompareResults(DocumentSnapshot document, QRParser parser) {
+    protected void displayLotteryResults(DocumentSnapshot document, QRParser parser) {
         OfficialResults officialResults = new OfficialResults(document);
         UserResults userResults = new UserResults(parser);
 
@@ -103,166 +126,186 @@ public class DhanaNidhanayaResultActivity extends BaseResultActivity {
         updateMatchIndicators(officialResults, userResults);
     }
 
+    @Override
+    protected MatchResults getMatchResults() {
+        return matchResults;
+    }
+
     private void updateOfficialDisplay(OfficialResults official) {
-        logoImageView.setImageResource(R.drawable.dana_nidanaya);
-        lotteryNameTextView.setText("Dhana Nidhanaya");
-        if (official.drawDate != null) {
-            dateTextView.setText(new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(official.drawDate.toDate()));
+        // Update letter
+        if (officialLetter1 != null) {
+            officialLetter1.setText(official.letter != null ? official.letter : "N/A");
         }
-        drawNoTextView.setText(official.drawNo != null ? "Draw #" + official.drawNo : "N/A");
 
-        officialLetter1.setText(official.letter);
-        official5Digit.setText(official.fiveDigitNumber);
+        // Update 5-digit special number
+        if (official5Digit != null) {
+            official5Digit.setText(official.fiveDigitNumber != null ? official.fiveDigitNumber : "N/A");
+        }
 
-
+        // Update regular numbers
         for (int i = 0; i < officialNumTextViews.length; i++) {
-            if (i < official.numbersList.size()) {
-                officialNumTextViews[i].setText(String.valueOf(official.numbersList.get(i)));
-            } else {
-                officialNumTextViews[i].setText("N/A");
+            if (officialNumTextViews[i] != null) {
+                if (i < official.numbersList.size()) {
+                    officialNumTextViews[i].setText(String.valueOf(official.numbersList.get(i)));
+                } else {
+                    officialNumTextViews[i].setText("N/A");
+                }
             }
         }
     }
 
     private void updateUserDisplay(UserResults user) {
-        userLetter1.setText(user.letter1);
-        userLetter2.setText(user.letter2);
-        user5Digit.setText(user.fiveDigitNumber);
+        // Update letters
+        if (userLetter1 != null) {
+            userLetter1.setText(user.letter1 != null ? user.letter1 : "N/A");
+        }
+        if (userLetter2 != null) {
+            userLetter2.setText(user.letter2 != null ? user.letter2 : "N/A");
+        }
 
+        // Update 5-digit special number
+        if (user5Digit != null) {
+            user5Digit.setText(user.fiveDigitNumber != null ? user.fiveDigitNumber : "N/A");
+        }
+
+        // Update regular numbers
         for (int i = 0; i < userNumTextViews.length; i++) {
-            if (i < user.numbersList.size()) {
-                userNumTextViews[i].setText(user.numbersList.get(i));
-            } else {
-                userNumTextViews[i].setText("N/A");
+            if (userNumTextViews[i] != null) {
+                if (i < user.numbersList.size()) {
+                    userNumTextViews[i].setText(user.numbersList.get(i));
+                } else {
+                    userNumTextViews[i].setText("N/A");
+                }
             }
         }
     }
 
     private void compareResults(OfficialResults official, UserResults user) {
-        // <<< CHANGE: User ගේ අකුරු දෙකම, Official අකුරට සංසන්දනය කිරීම >>>
+        // Compare letters - User's two letters against official's single letter
         String officialLetter = official.letter;
-
         if (officialLetter != null) {
             matchResults.isLetter1Matched = officialLetter.equals(user.letter1);
             matchResults.isLetter2Matched = officialLetter.equals(user.letter2);
         }
 
-        matchResults.is5DigitMatched = official.fiveDigitNumber != null && official.fiveDigitNumber.equals(user.fiveDigitNumber);
+        // Compare 5-digit special number
+        matchResults.is5DigitMatched = official.fiveDigitNumber != null &&
+                official.fiveDigitNumber.equals(user.fiveDigitNumber);
 
+        // Compare regular numbers
         Set<Long> officialNumbersSet = new HashSet<>();
         for (String numStr : official.numbersList) {
             try {
                 officialNumbersSet.add(Long.parseLong(numStr));
-            } catch (NumberFormatException e) { /* ignore */ }
+            } catch (NumberFormatException e) {
+                // Skip invalid numbers
+            }
         }
 
         for (String userNumStr : user.numbersList) {
             try {
-                if (officialNumbersSet.contains(Long.parseLong(userNumStr))) {
+                long userNum = Long.parseLong(userNumStr);
+                if (officialNumbersSet.contains(userNum)) {
                     matchResults.matchedNumbersCount++;
-                    matchResults.matchedNumbersList.add(Long.parseLong(userNumStr));
+                    matchResults.matchedNumbersList.add(userNum);
                 }
-            } catch (NumberFormatException e) { /* ignore */ }
-        }
-    }
-
-    private void updateMatchIndicators(OfficialResults official, UserResults user) {
-        setMatchImage(matchResults.isLetter1Matched, officialLetter1Indicator, userLetter1Indicator);
-        setMatchImage(matchResults.isLetter2Matched, officialLetter2Indicator, userLetter2Indicator);
-        setMatchImage(matchResults.is5DigitMatched, official5DigitIndicator, user5DigitIndicator);
-
-        Set<String> userNumbersSet = new HashSet<>(user.numbersList);
-        Set<String> officialNumbersSet = new HashSet<>(official.numbersList);
-
-        for (int i = 0; i < officialNumImageViews.length && i < official.numbersList.size(); i++) {
-            setMatchImage(userNumbersSet.contains(official.numbersList.get(i)), officialNumImageViews[i]);
-        }
-
-        for (int i = 0; i < userNumImageViews.length && i < user.numbersList.size(); i++) {
-            setMatchImage(officialNumbersSet.contains(user.numbersList.get(i)), userNumImageViews[i]);
-        }
-    }
-
-    private void setMatchImage(boolean isMatch, ImageView... imageViews) {
-        int imageRes = isMatch ? R.drawable.done : R.drawable.close;
-        for (ImageView imageView : imageViews) {
-            if (imageView != null) {
-                imageView.setImageResource(imageRes);
-                imageView.setVisibility(View.VISIBLE);
+            } catch (NumberFormatException e) {
+                // Skip invalid numbers
             }
         }
     }
 
-    // --- Helper Classes ---
+    private void updateMatchIndicators(OfficialResults official, UserResults user) {
+        // Set letter match indicators
+        setMatchImage(matchResults.isLetter1Matched, officialLetter1Indicator, userLetter1Indicator);
+        setMatchImage(matchResults.isLetter2Matched, userLetter2Indicator);
+        setMatchImage(matchResults.is5DigitMatched, official5DigitIndicator, user5DigitIndicator);
 
-    private static class MatchResults {
-        boolean isLetter1Matched, isLetter2Matched, is5DigitMatched = false;
+        // Set number match indicators
+        Set<String> userNumbersSet = new HashSet<>(user.numbersList);
+        Set<String> officialNumbersSet = new HashSet<>(official.numbersList);
+
+        // Official numbers indicators
+        for (int i = 0; i < officialNumImageViews.length && i < official.numbersList.size(); i++) {
+            if (officialNumImageViews[i] != null) {
+                boolean isMatched = userNumbersSet.contains(official.numbersList.get(i));
+                setMatchImage(isMatched, officialNumImageViews[i]);
+            }
+        }
+
+        // User numbers indicators
+        for (int i = 0; i < userNumImageViews.length && i < user.numbersList.size(); i++) {
+            if (userNumImageViews[i] != null) {
+                boolean isMatched = officialNumbersSet.contains(user.numbersList.get(i));
+                setMatchImage(isMatched, userNumImageViews[i]);
+            }
+        }
+    }
+
+    // --- Helper Classes for Dhana Nidhanaya ---
+
+    private static class DhanaNidhanayaMatchResults extends MatchResults {
+        boolean isLetter1Matched = false;
+        boolean isLetter2Matched = false;
+        boolean is5DigitMatched = false;
         int matchedNumbersCount = 0;
         ArrayList<Long> matchedNumbersList = new ArrayList<>();
 
-        void addToIntent(Intent intent, String lotteryName) {
-            intent.putExtra("LotteryName", lotteryName);
-            intent.putExtra("IsLetter1Matched", isLetter1Matched);
-            intent.putExtra("IsLetter2Matched", isLetter2Matched);
-            intent.putExtra("Is5DigitMatched", is5DigitMatched);
-            intent.putExtra("MatchedNumbersCount", matchedNumbersCount);
-            intent.putExtra("MatchedNumbersList", matchedNumbersList);
+        @Override
+        public void addToIntent(Intent intent, String lotteryName) {
+            intent.putExtra(LotteryConstants.IntentExtras.LOTTERY_NAME, lotteryName);
+            intent.putExtra(LotteryConstants.IntentExtras.IS_LETTER_MATCHED, isLetter1Matched);
+            intent.putExtra(LotteryConstants.IntentExtras.IS_LETTER2_MATCHED, isLetter2Matched);
+            intent.putExtra(LotteryConstants.IntentExtras.IS_5DIGIT_MATCHED, is5DigitMatched);
+            intent.putExtra(LotteryConstants.IntentExtras.MATCHED_NUMBERS_COUNT, matchedNumbersCount);
+            intent.putExtra(LotteryConstants.IntentExtras.MATCHED_NUMBERS_LIST, matchedNumbersList);
         }
     }
 
     private static class OfficialResults {
-        Timestamp drawDate;
-        Long drawNo;
         String letter;
-        String fiveDigitNumber = ""; // Initialize as empty
+        String fiveDigitNumber = "";
         final List<String> numbersList = new ArrayList<>();
 
         OfficialResults(DocumentSnapshot doc) {
-            this.drawDate = doc.getTimestamp("Date"); //
-            this.drawNo = doc.getLong("Draw_No"); //
-            this.letter = doc.getString("English_Letter"); //
+            this.letter = doc.getString(LotteryConstants.FirestoreFields.ENGLISH_LETTER);
 
-            // --- Winning Numbers (Number01-04) ලබා ගැනීම ---
+            // Get winning numbers (Number01-04)
             for (int i = 1; i <= 4; i++) {
-                // දත්ත ගබඩාවේ අංක 'Long' ලෙස ඇති නිසා, සෘජුවම getLong() භාවිතා කරයි
-                Long number = doc.getLong("Number0" + i); //
+                Long number = doc.getLong(LotteryConstants.FirestoreFields.NUMBER_01.replace("01", String.format("%02d", i)));
                 if (number != null) {
                     numbersList.add(String.valueOf(number));
                 }
             }
 
-            // --- Special Number (Lakshapathi_Double_Chance_No) ලබා ගැනීම ---
+            // Get special 5-digit number from Special_Draws
             try {
-                // 1. 'Special_Draws' නමැති Map එක ලබා ගනී
-                Object specialDrawsObj = doc.get("Special_Draws"); //
+                Object specialDrawsObj = doc.get(LotteryConstants.FirestoreFields.SPECIAL_DRAWS);
                 if (specialDrawsObj instanceof Map) {
                     Map<String, Object> specialDraws = (Map<String, Object>) specialDrawsObj;
-
-                    // 2. එම Map එකෙන් 'Lakshapathi_Double_Chance_No' නමැති List එක ලබා ගනී
-                    Object listObj = specialDraws.get("Lakshapathi_Double_Chance_No"); //
+                    Object listObj = specialDraws.get(LotteryConstants.FirestoreFields.LAKSHAPATHI_DOUBLE_CHANCE_NO);
                     if (listObj instanceof List) {
                         List<?> specialNumberList = (List<?>) listObj;
-
-                        // 3. List එකේ ඇති අංක එකතු කර තනි String එකක් සාදයි
                         StringBuilder stringBuilder = new StringBuilder();
                         for (Object item : specialNumberList) {
                             if (item != null) {
                                 stringBuilder.append(item.toString());
                             }
                         }
-                        this.fiveDigitNumber = stringBuilder.toString(); // "54760"
+                        this.fiveDigitNumber = stringBuilder.toString();
                     }
                 }
             } catch (Exception e) {
-                // දෝෂයක් ඇති වුවහොත්, fiveDigitNumber එක හිස්ව පවතී
+                android.util.Log.w("DhanaNidhanaya", "Error parsing special number", e);
                 this.fiveDigitNumber = "";
-                // Log the error if needed
             }
         }
     }
 
     private static class UserResults {
-        String letter1, letter2, fiveDigitNumber;
+        String letter1;
+        String letter2;
+        String fiveDigitNumber;
         final List<String> numbersList;
 
         UserResults(QRParser parser) {

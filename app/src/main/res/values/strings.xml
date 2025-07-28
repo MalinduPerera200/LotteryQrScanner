@@ -1,60 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App Name -->
-    <string name="app_name">Lottery Results</string>
+    <string name="app_name">Lottery Results Scanner</string>
 
-    <!-- Content Descriptions -->
-    <string name="lottery_logo">Lottery Logo</string>
-    <string name="match_indicator">Match Indicator</string>
+    <!-- Main Actions -->
+    <string name="scan_qr_code">Scan QR Code</string>
+    <string name="view_result">View Result</string>
+    <string name="scan_another_ticket">Scan Another Ticket</string>
+    <string name="back_to_home">Back to Home</string>
 
     <!-- Section Titles -->
     <string name="winning_numbers">Winning Numbers</string>
     <string name="your_numbers">Your Numbers</string>
+    <string name="match_summary">Your Match Summary</string>
+    <string name="prize_announcement">🎉 Your Prize 🎉</string>
 
-    <!-- Button Text -->
-    <string name="view_result">View Result</string>
-
-    <!-- Activity Title -->
-    <string name="results_activity_title">Lottery Results</string>
-
-    <!-- Additional Strings for Lottery App -->
-    <string name="draw_number_prefix">Draw #</string>
-    <string name="congratulations">Congratulations!</string>
-    <string name="better_luck_next_time">Better luck next time!</string>
-    <string name="matches_found">%1$d matches found</string>
-    <string name="no_matches">No matches found</string>
-
-    <!-- Prize Categories -->
-    <string name="jackpot_winner">Jackpot Winner!</string>
-    <string name="second_prize">Second Prize</string>
-    <string name="third_prize">Third Prize</string>
-    <string name="consolation_prize">Consolation Prize</string>
-
-    <!-- Actions -->
-    <string name="play_again">Play Again</string>
-    <string name="check_results">Check Results</string>
-    <string name="share_results">Share Results</string>
-    <string name="back_to_home">Back to Home</string>
-
-    <!-- Loading States -->
-    <string name="loading_results">Loading results...</string>
-    <string name="checking_numbers">Checking your numbers...</string>
-
-    <!-- Error Messages -->
-    <string name="error_loading_results">Error loading results. Please try again.</string>
-    <string name="network_error">Network error. Please check your connection.</string>
-
-    <!-- Number Types -->
-    <string name="english_letter">English Letter</string>
-    <string name="bonus_number">Bonus Number</string>
-    <string name="regular_number">Regular Number</string>
-
-    <!-- Date Formats -->
-    <string name="date_format">MMM dd, yyyy</string>
-
-    <!-- Accessibility -->
+    <!-- Content Descriptions for Accessibility -->
+    <string name="lottery_logo">Lottery Logo</string>
+    <string name="match_indicator">Match Indicator</string>
     <string name="winning_number_description">Winning number %1$s</string>
     <string name="your_number_description">Your number %1$s</string>
     <string name="matched_number">Matched number</string>
     <string name="unmatched_number">Unmatched number</string>
+
+    <!-- Status Messages -->
+    <string name="loading_results">Loading results…</string>
+    <string name="checking_numbers">Checking your numbers…</string>
+    <string name="calculating_prize">Calculating prize…</string>
+    <string name="draw_number_prefix">Draw #%1$d</string>
+    <string name="matches_found">%1$d matches found</string>
+    <string name="no_matches">No matches found</string>
+
+    <!-- Prize Messages -->
+    <string name="congratulations">Congratulations!</string>
+    <string name="better_luck_next_time">Sorry, Better Luck Next Time!</string>
+    <string name="jackpot_winner">Jackpot Winner!</string>
+    <string name="super_prize">Super Prize!</string>
+    <string name="second_prize">Second Prize</string>
+    <string name="third_prize">Third Prize</string>
+    <string name="consolation_prize">Consolation Prize</string>
+
+    <!-- Error Messages -->
+    <string name="error_invalid_qr_code">Invalid QR code format. Please scan a valid lottery ticket.</string>
+    <string name="error_invalid_draw_number">Invalid draw number in QR code.</string>
+    <string name="error_unsupported_lottery">This lottery type is not supported yet.</string>
+    <string name="error_network">Network connection failed. Please check your internet and try again.</string>
+    <string name="error_database">Unable to access lottery data. Please try again later.</string>
+    <string name="error_draw_not_found">No results found for this draw number.</string>
+    <string name="error_camera_permission">Camera permission is required to scan QR codes.</string>
+    <string name="error_camera">Camera error occurred. Please try again.</string>
+    <string name="error_qr_scan">Failed to scan QR code. Please try again.</string>
+    <string name="error_validation">Invalid data format.</string>
+    <string name="error_unknown">An unexpected error occurred. Please try again.</string>
+    <string name="error_no_internet">No internet connection available.</string>
+    <string name="error_timeout">Request timed out. Please try again.</string>
+
+    <!-- Lottery Types -->
+    <string name="lottery_mega_power">Mega Power</string>
+    <string name="lottery_nlb_jaya">NLB Jaya</string>
+    <string name="lottery_govi_setha">Govi Setha</string>
+    <string name="lottery_dhana_nidhanaya">Dhana Nidhanaya</string>
+    <string name="lottery_mahajana_sampatha">Mahajana Sampatha</string>
+
+    <!-- Number Types -->
+    <string name="english_letter">English Letter</string>
+    <string name="bonus_number">Bonus Number</string>
+    <string name="special_number">Special Number</string>
+    <string name="regular_number">Regular Number</string>
+
+    <!-- Currency Format -->
+    <string name="currency_format">Rs. %1$s</string>
+    <string name="amount_with_currency">Rs. %1$,d</string>
+
+    <!-- Match Types -->
+    <string name="forward_match">Forward Match</string>
+    <string name="backward_match">Backward Match</string>
+    <string name="partial_match">Partial Match</string>
+    <string name="no_match">No Match</string>
+
+    <!-- Permissions -->
+    <string name="permission_camera_rationale">Camera permission is needed to scan QR codes on lottery tickets.</string>
+    <string name="permission_denied">Permission denied</string>
+    <string name="permission_granted">Permission granted</string>
+
+    <!-- Date and Time -->
+    <string name="date_format">MMM dd, yyyy</string>
+    <string name="time_format">HH:mm</string>
+    <string name="datetime_format">MMM dd, yyyy HH:mm</string>
+
+    <!-- Accessibility -->
+    <string name="content_description_logo">%1$s lottery logo</string>
+    <string name="content_description_match_tick">Number matched</string>
+    <string name="content_description_match_cross">Number not matched</string>
+    <string name="content_description_loading">Loading animation</string>
+
+    <!-- Instructions -->
+    <string name="instruction_scan_qr">Point your camera at the QR code on your lottery ticket</string>
+    <string name="instruction_hold_steady">Hold steady while scanning</string>
+    <string name="instruction_ensure_good_lighting">Ensure good lighting for better scanning</string>
+
+    <!-- Button Labels -->
+    <string name="btn_try_again">Try Again</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_ok">OK</string>
+    <string name="btn_settings">Settings</string>
+    <string name="btn_help">Help</string>
+    <string name="btn_about">About</string>
 </resources>

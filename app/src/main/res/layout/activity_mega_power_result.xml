@@ -194,7 +194,6 @@
                             android:layout_height="20dp"
                             android:layout_gravity="bottom|center_horizontal"
                             android:layout_marginBottom="4dp"
-                            android:background="@drawable/done"
                             android:contentDescription="@string/match_indicator"
                             android:visibility="visible" />
 
@@ -226,7 +225,6 @@
                             android:layout_height="20dp"
                             android:layout_gravity="bottom|center_horizontal"
                             android:layout_marginBottom="4dp"
-                            android:background="@drawable/close"
                             android:contentDescription="@string/match_indicator"
                             android:visibility="visible" />
 
@@ -257,7 +255,6 @@
                             android:layout_height="20dp"
                             android:layout_gravity="bottom|center_horizontal"
                             android:layout_marginBottom="4dp"
-                            android:background="@drawable/done"
                             android:contentDescription="@string/match_indicator"
                             android:visibility="visible" />
 
@@ -287,7 +284,6 @@
                             android:layout_height="20dp"
                             android:layout_gravity="bottom|center_horizontal"
                             android:layout_marginBottom="4dp"
-                            android:background="@drawable/close"
                             android:contentDescription="@string/match_indicator"
                             android:visibility="visible" />
 
@@ -317,7 +313,6 @@
                             android:layout_height="20dp"
                             android:layout_gravity="bottom|center_horizontal"
                             android:layout_marginBottom="4dp"
-                            android:background="@drawable/close"
                             android:contentDescription="@string/match_indicator"
                             android:visibility="visible" />
 
@@ -347,7 +342,6 @@
                             android:layout_height="20dp"
                             android:layout_gravity="bottom|center_horizontal"
                             android:layout_marginBottom="4dp"
-                            android:background="@drawable/close"
                             android:contentDescription="@string/match_indicator"
                             android:visibility="visible" />
 
@@ -419,7 +413,6 @@
                             android:layout_height="20dp"
                             android:layout_gravity="bottom|center_horizontal"
                             android:layout_marginBottom="4dp"
-                            android:background="@drawable/close"
                             android:contentDescription="@string/match_indicator"
                             android:visibility="visible" />
 
@@ -451,7 +444,6 @@
                             android:layout_height="20dp"
                             android:layout_gravity="bottom|center_horizontal"
                             android:layout_marginBottom="4dp"
-                            android:background="@drawable/done"
                             android:contentDescription="@string/match_indicator"
                             android:visibility="visible" />
 
@@ -482,7 +474,6 @@
                             android:layout_height="20dp"
                             android:layout_gravity="bottom|center_horizontal"
                             android:layout_marginBottom="4dp"
-                            android:background="@drawable/close"
                             android:contentDescription="@string/match_indicator"
                             android:visibility="visible" />
 
@@ -512,7 +503,6 @@
                             android:layout_height="20dp"
                             android:layout_gravity="bottom|center_horizontal"
                             android:layout_marginBottom="4dp"
-                            android:background="@drawable/done"
                             android:contentDescription="@string/match_indicator"
                             android:visibility="visible" />
 
@@ -542,7 +532,6 @@
                             android:layout_height="20dp"
                             android:layout_gravity="bottom|center_horizontal"
                             android:layout_marginBottom="4dp"
-                            android:background="@drawable/done"
                             android:contentDescription="@string/match_indicator"
                             android:visibility="visible" />
 
@@ -572,7 +561,6 @@
                             android:layout_height="20dp"
                             android:layout_gravity="bottom|center_horizontal"
                             android:layout_marginBottom="4dp"
-                            android:background="@drawable/done"
                             android:contentDescription="@string/match_indicator"
                             android:visibility="visible" />
 
@@ -588,7 +576,6 @@
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="32dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="24dp"
                 android:backgroundTint="@color/primary"
@@ -602,7 +589,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/your_numbers_container"
                 app:rippleColor="@color/button_ripple" />
 
             <!-- Loading Animation -->

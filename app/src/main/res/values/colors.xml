@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Existing Colors -->
     <color name="nlb_blue">#0BA7EC</color>
     <color name="dlb_red">#C02024</color>
     <color name="nlb_light_blue">#1CD3D9</color>
     <color name="nlb_yellow">#FEBA27</color>
     <color name="nlb_orange">#D66324</color>
     <color name="nlb_pink">#E026A3</color>
-    <color name="nlb_purple">#6A3B98</color> <color name="dlb_green">#BEC445</color>
+    <color name="nlb_purple">#6A3B98</color>
+    <color name="dlb_green">#BEC445</color>
 
     <color name="black">#000000</color>
     <color name="red">#ff0000</color>
@@ -14,33 +16,34 @@
     <color name="gradient_start">#7B2869</color>
     <color name="gradient_center">#C74B50</color>
     <color name="gradient_end">#ffb600</color>
-        <color name="colorPrimary">#2196F3</color>
-        <color name="colorPrimaryDark">#1976D2</color>
-        <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="colorAccent">#FF4081</color>
 
-        <color name="transparent">#00000000</color>
+    <color name="transparent">#00000000</color>
 
-        <!-- Lottery Number Ball Colors -->
-        <color name="english_letter_background">#E91E63</color>
-        <color name="bonus_number_background">#FF9800</color>
-        <color name="regular_number_background">#2196F3</color>
+    <!-- Lottery Number Ball Colors -->
+    <color name="english_letter_background">#E91E63</color>
+    <color name="bonus_number_background">#FF9800</color>
+    <color name="regular_number_background">#2196F3</color>
 
-        <!-- Card Background Colors -->
-        <color name="card_background_primary">#3F51B5</color>
-        <color name="card_background_secondary">#9C27B0</color>
+    <!-- Card Background Colors -->
+    <color name="card_background_primary">#3F51B5</color>
+    <color name="card_background_secondary">#9C27B0</color>
 
-        <!-- Button Colors -->
-        <color name="button_background">#4CAF50</color>
+    <!-- Button Colors -->
+    <color name="button_background">#4CAF50</color>
 
-        <!-- Match Indicator Colors -->
-        <color name="match_indicator_background">#4CAF50</color>
-        <color name="no_match_indicator_background">#F44336</color>
+    <!-- Match Indicator Colors -->
+    <color name="match_indicator_background">#4CAF50</color>
+    <color name="no_match_indicator_background">#F44336</color>
 
-        <!-- Progress Indicator -->
-        <color name="progress_track">#33FFFFFF</color>
+    <!-- Progress Indicator -->
+    <color name="progress_track">#33FFFFFF</color>
 
-        <color name="text_secondary">#757575</color>
-    <!-- Add these to your colors.xml file -->
+    <color name="text_secondary">#757575</color>
+
+    <!-- Theme Colors -->
     <color name="primary">#1E88E5</color>
     <color name="primary_variant">#1565C0</color>
     <color name="background">#FAFAFA</color>
@@ -51,4 +54,38 @@
     <color name="number_ball_unmatched">#E0E0E0</color>
     <color name="bonus_ball_color">#FF5722</color>
     <color name="button_ripple">#90CAF9</color>
+
+    <!-- NEW: Match Colors for Color-Based System -->
+    <!-- Matched Colors (Green Theme) -->
+    <color name="match_green_dark">#2E7D0A</color>        <!-- Dark green for matched letters -->
+    <color name="match_green_medium">#4CAF50</color>      <!-- Medium green for matched bonus -->
+    <color name="match_green_light">#66BB6A</color>       <!-- Light green for matched numbers -->
+
+    <!-- Additional Match Variations -->
+    <color name="match_green_vibrant">#00C853</color>     <!-- Vibrant green for special matches -->
+    <color name="match_green_pastel">#81C784</color>      <!-- Pastel green for subtle matches -->
+
+    <!-- Unmatched Colors (Keep original theme) -->
+    <color name="unmatch_blue">#1E88E5</color>            <!-- Blue for unmatched letters -->
+    <color name="unmatch_orange">#FF5722</color>          <!-- Orange for unmatched bonus -->
+    <color name="unmatch_gray">#9E9E9E</color>            <!-- Gray for unmatched numbers -->
+    <color name="unmatch_light_gray">#E0E0E0</color>      <!-- Light gray alternative -->
+
+    <!-- Text Colors for Different Backgrounds -->
+    <color name="text_on_matched">#FFFFFF</color>         <!-- White text on matched (green) backgrounds -->
+    <color name="text_on_unmatched">#212121</color>       <!-- Dark text on unmatched (light) backgrounds -->
+    <color name="text_on_colored">#FFFFFF</color>         <!-- White text on colored backgrounds -->
+
+    <!-- Special Status Colors -->
+    <color name="jackpot_gold">#FFD700</color>            <!-- Gold for jackpot -->
+    <color name="prize_silver">#C0C0C0</color>            <!-- Silver for prizes -->
+    <color name="no_prize_red">#F44336</color>            <!-- Red for no prize -->
+
+    <!-- Animation Colors -->
+    <color name="animation_start">#FFFFFF</color>         <!-- Starting color for animations -->
+    <color name="animation_end">#4CAF50</color>           <!-- Ending color for animations -->
+
+    <!-- Accessibility Colors (High Contrast) -->
+    <color name="high_contrast_matched">#006400</color>   <!-- High contrast green -->
+    <color name="high_contrast_unmatched">#808080</color> <!-- High contrast gray -->
 </resources>
